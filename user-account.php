@@ -63,5 +63,5 @@
     </form>
 
     <!-- Include your footer here -->
-</body>
-</html>
+
+<?php include('partials-front/footer.php'); ?>

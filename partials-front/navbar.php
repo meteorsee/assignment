@@ -17,7 +17,7 @@
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 	<link href="css/tiny-slider.css" rel="stylesheet">
 	<link href="css/style.css" rel="stylesheet">
-	<title>Furni Free Bootstrap 5 Template for Furniture and Interior Design Websites by Untree.co </title>
+	<title>Gadget Galaxy</title>
 </head>
 
 <body>
@@ -71,12 +71,12 @@
 				<?php 
                     // Check if the user is logged in
                     if(isset($_SESSION['user'])) {
-						echo $_SESSION['user']; // Display session message
+						//echo $_SESSION['user']; // Display session message
                         // User is logged in, add a link to the account image that directs them to user-account.php
-                        echo '<li><a class="nav-link" href="user/user-account.php"><img src="images/user.svg"></a></li>';
+                        echo '<li><a class="nav-link" href="user-account.php"><img src="images/user.svg"></a></li>';
                     } else {
                         // User is not logged in, add a link to the login page
-                        echo '<li><a class="nav-link" href="user/user-login.php"><img src="images/user.svg"></a></li>';
+                        echo '<li><a class="nav-link" href="user-login.php"><img src="images/user.svg"></a></li>';
                     }
                 ?>
 					<li><a class="nav-link" href="cart.php"><img src="images/cart.svg"></a></li>

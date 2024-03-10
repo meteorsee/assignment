@@ -1,9 +1,9 @@
-<?php include('../config/constants.php') ?>
+<?php include('partials-front/navbar.php'); ?>
 
 <html>
     <head>
         <title>Login - Food Order System</title>
-        <link rel="stylesheet" href="../css/user-login-register.css">
+        <link rel="stylesheet" href="css/user-login-register.css">
     </head>
 
     <body>
@@ -92,3 +92,5 @@
     }
 
 ?>
+
+<?php include('partials-front/footer.php'); ?>
