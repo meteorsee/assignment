@@ -57,14 +57,16 @@
                     <td>Current Image: </td>
                     <td>
                         <?php
-                            if($current_image != ""){
+                            if($current_image == ""){
+
+                                // Display the message
+                                echo "<div class='error'>Image Not Available.</div>";
+
+                            }else{
                                 // Display the image if available
                                 ?>
-                                <img src="<?php echo SITEURL; ?>images/products/<?php echo $current_image; ?>" width="100px">
+                                <img src="<?php echo SITEURL; ?>images/products/<?php echo $current_image; ?>" alt="<?php echo $title; ?>" width="100px">
                                 <?php
-                            }else{
-                                // Display the message
-                                echo "<div class='error'>Image Not Added.</div>";
                             }
                         ?>
                     </td>
@@ -112,50 +114,19 @@
 
                 <tr>
                     <td>Featured: </td>
-                    <td><input 
-                            <?php 
-                                if($featured=="Yes"){
-                                    echo "Checked"; 
-                                }
-                            ?>
-                            type="radio" name="featured" value="Yes">
-                        Yes
-                    </td>
-                    <td><input 
-                            <?php 
-                                if($featured=="No"){
-                                    echo "Checked"; 
-                                }
-                            ?>
-                            type="radio" name="featured" value="No">
-                            No
-                    </td>
+                    <td><input <?php if($featured=="Yes"){echo "Checked"; }?> type="radio" name="featured" value="Yes">Yes</td>
+                    <td><input <?php if($featured=="No"){echo "Checked"; } ?> type="radio" name="featured" value="No">No</td>
                 </tr>
                 <tr>
                     <td>Active: </td>
-                    <td><input 
-                            <?php 
-                                if($active=="Yes"){
-                                    echo "Checked"; 
-                                }
-                            ?>
-                            type="radio" name="active" value="Yes">
-                            Yes
-                    </td>
-                    <td><input 
-                            <?php 
-                                if($active=="No"){
-                                    echo "Checked"; 
-                                }
-                            ?>
-                            type="radio" name="active" value="No">
-                            No
-                        </td>
+                    <td><input <?php if($active=="Yes"){echo "Checked"; }?> type="radio" name="active" value="Yes">Yes</td>
+                    <td><input <?php if($active=="Yes"){echo "Checked"; }?> type="radio" name="active" value="Yes">No</td>
+
                 </tr>
                 <tr>
                     <td colspan="2">
-                        <input type="hidden" name="current_image" value="<?php echo $current_image; ?>">
                         <input type="hidden" name="id" value="<?php echo $id; ?>">
+                        <input type="hidden" name="current_image" value="<?php echo $current_image; ?>">
                         <input type="submit" name="submit" value="Update Product" class="btn-secondary">
                     </td>
                 </tr>
@@ -163,6 +134,7 @@
             </form>
 
             <?php
+            
                 if(isset($_POST['submit'])){
                     // Get all the values from the form
                     $id = $_POST['id'];
@@ -178,7 +150,9 @@
                     // Check whether the image is selected or not
                     if(isset($_FILES['image']['name'])){
                         // Get the image details
-                        $image_name = $_FILES['image']['name'];
+                        $image_name = $_FILES['image']['name'];     // New Image Name
+
+                        //Check the file is available or not
                         if($image_name != ""){
                             // Image Available
                             // Upload the NEW image
@@ -202,10 +176,10 @@
 
                             if($upload == false){
                                 // Set message
-                                $_SESSION['upload'] = "<div class='error'>Failed to upload image.</div>";
+                                $_SESSION['upload'] = "<div class='error'>Failed to upload new image.</div>";
                             
-                                // Redirect to Add Product page
-                                header("location:".SITEURL."admin/add-product.php");
+                                // Redirect to Manage Product page
+                                header("location:".SITEURL."admin/manage-product.php");
 
                                 // Stop the process
                                 die();
@@ -238,6 +212,7 @@
                     $sql3 = "UPDATE tbl_product SET
                                     title = '$title',
                                     description = '$description',
+                                    price = $price,
                                     image_name = '$image_name',
                                     category_id = '$category',
                                     featured = '$featured',
