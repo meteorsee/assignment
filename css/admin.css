@@ -123,15 +123,13 @@ table tr td{
 }
 
 /*Footer CSS*/
-.footer{
-    background-color: red;
-    color: white;
-}
+.footer-section {
+    padding: 80px 0;
+    background: #ff6b81;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+  }
+  
 
-/*Login CSS*/
-.login{
-    border: 1px solid grey;
-    width: 30%;
-    margin: 10% auto;
-    padding: 2%;
-}

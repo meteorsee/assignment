@@ -83,6 +83,23 @@
                     Revenue Generated
                 </div>
 
+                <div class="col-4 text-center">
+                    <?php
+                        // SQL Query
+                        $sql5 = "SELECT * FROM tbl_contact";
+                        
+                        // Execute Query
+                        $res5 = mysqli_query($conn, $sql5);
+
+                        // Count the rows
+                        $count5 = mysqli_num_rows($res5);
+                        
+                    ?>    
+                    <h1><?php echo $count5; ?></h1>
+                    <br/>
+                    Total Messages
+                </div>
+
                 <div class="clearfix"></div>
             </div>
         </div>

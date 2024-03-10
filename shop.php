@@ -18,7 +18,7 @@
             <div class="container">
                 <form action="<?php echo SITEURL; ?>product-search.php" method="POST">
                     <input type="search" name="search" placeholder="Search for Product.." required>
-                    <input type="submit" name="submit" value="Search" class="btn btn-primary">
+                    <input type="submit" name="submit" value="Search" class="btn btn-search">
                 </form>
             </div>
         </section>
@@ -48,7 +48,7 @@
                     ?>
                     <!-- Start Column 1 -->
                     <div class="col-12 col-md-4 col-lg-3 mb-5">
-                        <a class="product-item" href="#">
+                        <a class="product-item" href="#" >
                             <?php
                             if ($image_name == "") {
                                 // Display message
@@ -63,6 +63,9 @@
                             <h3 class="product-title">
                                 <?php echo $title; ?>
                             </h3>
+                            <p class="product-description">
+                                    <?php echo $description; ?>
+                            </p>
                             <strong class="product-price">RM
                                 <?php echo $price; ?>
                             </strong>
@@ -72,6 +75,8 @@
                         </a>
                     </div>
                     <!-- End Column 1 -->
+
+                    
                     <?php
                 }
             } else {

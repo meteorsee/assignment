@@ -270,6 +270,16 @@ a.more {
   border-color: #314d43;
 }
 
+.btn.btn-search {
+  background: #6b857b;
+  border-color: #3b5d50;
+}
+
+.btn.btn-search:hover {
+  background: #b6c4bf;
+  border-color: #314d43;
+}
+
 .btn.btn-secondary {
   color: #2f2f2f;
   background: #f9bf29;
@@ -1112,6 +1122,13 @@ textarea {
   width: 70%;
   float: left;
   margin-left: 8%;
+}
+
+.product-description {
+  color: #666;
+  margin-bottom: 10px;
+  font-size: 14px; /* Adjust font size as needed */
+  line-height: 1.5; /* Adjust line height as needed */
 }
 
 .product-price {
