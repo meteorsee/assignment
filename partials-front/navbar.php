@@ -73,10 +73,10 @@
                     if(isset($_SESSION['user'])) {
 						echo $_SESSION['user']; // Display session message
                         // User is logged in, add a link to the account image that directs them to user-account.php
-                        echo '<li><a class="nav-link" href="user/user-account.php"><img src="images/user.svg"></a></li>';
+                        echo '<li><a class="nav-link" href="user-account.php"><img src="images/user.svg"></a></li>';
                     } else {
                         // User is not logged in, add a link to the login page
-                        echo '<li><a class="nav-link" href="user/user-login.php"><img src="images/user.svg"></a></li>';
+                        echo '<li><a class="nav-link" href="user-login.php"><img src="images/user.svg"></a></li>';
                     }
                 ?>
 					<li><a class="nav-link" href="cart.php"><img src="images/cart.svg"></a></li>

@@ -1,4 +1,4 @@
-<?php include('../config/constants.php'); ?>
+<?php include('partials-front/navbar.php'); ?>
 
 <?php 
     // Check if the user is logged in
@@ -46,6 +46,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Account</title>
     <!-- Include your CSS files here -->
+
 </head>
 <body>
     <h1>Welcome to Your Account, <?php echo $first_name; ?>!</h1>
