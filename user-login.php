@@ -1,9 +1,9 @@
-<?php include('../config/constants.php') ?>
+<?php include('config/constants.php') ?>
 
 <html>
     <head>
         <title>Login - Food Order System</title>
-        <link rel="stylesheet" href="../css/admin-login.css">
+        <link rel="stylesheet" href="css/user-login-register.css">
     </head>
 
     <body>
@@ -30,13 +30,15 @@
                 <input type="text" name="username" placeholder="Enter username"> <br><br>
                 Password: <br>
                 <input type="password" name="password" placeholder="Enter Password"><br><br>
+
                 <input type="checkbox" name="remember_me"> Remember Me<br><br>
 
                 <input type="submit" name="submit" value="Login" class="btn-primary">
                 <br><br>
+                <p>No Account yet? <a href="user-register.php">Register Now</a></p>
             </form>
             <!--END Login Form-->
-            <p class="text-center">Created by - <a href="www.meteor.com">Meteor</a></p>
+            <p class="text-center">Created by - <a href="www.meteor.com">Meteor Studio</a></p>
 
         </div>
 
@@ -63,8 +65,9 @@
             setcookie('password', '', time() - 3600, "/");
         }
 
+
         // Check SQL whether the username and password exists or not
-        $sql = "SELECT * FROM tbl_admin WHERE username='$username' AND PASSWORD='$password'";
+        $sql = "SELECT * FROM tbl_user WHERE username='$username' AND PASSWORD='$password'";
 
         // Execute the query
         $res = mysqli_query($conn, $sql);
@@ -76,11 +79,11 @@
             $_SESSION['login'] = "<div class='success'>Login Successful.</div>";
             $_SESSION["user"] = $username; // To check whether the user is logged in or not and logout will unset it
 
-            header('location:'.SITEURL.'admin/');
+            header('location:'.SITEURL);
         }else{
             // User not available
             $_SESSION['login'] = "<div class='error text-center'>Username or Password did not match.</div>";
-            header('location:'.SITEURL.'admin/login.php');
+            header('location:'.SITEURL.'/user-login.php');
         }
 
     }

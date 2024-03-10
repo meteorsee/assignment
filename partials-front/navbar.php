@@ -13,15 +13,9 @@
 	<meta name="keywords" content="bootstrap, bootstrap4" />
 
 	<!-- Bootstrap CSS -->
-	<link href="css/bootstrap.min.css" rel="stylesheet">
-	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-	<link href="css/tiny-slider.css" rel="stylesheet">
-	<link href="css/style.css" rel="stylesheet">
-	<title>Furni Free Bootstrap 5 Template for Furniture and Interior Design Websites by Untree.co </title>
+	<title>Register - Food Order System</title>
+    <link rel="stylesheet" href="css/user-login-register.css">
 </head>
-
-<body>
-
 	<!-- Start Header/Navigation -->
 	<nav class="custom-navbar navbar navbar navbar-expand-md navbar-dark bg-dark" arial-label="Furni navigation bar">
 
@@ -68,7 +62,7 @@
 				</ul>
 
 				<ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
-					<li><a class="nav-link" href="#"><img src="images/user.svg"></a></li>
+					<li><a class="nav-link" href="user-login.php"><img src="images/user.svg"></a></li>
 					<li><a class="nav-link" href="cart.php"><img src="images/cart.svg"></a></li>
 				</ul>
 			</div>
