@@ -1,27 +1,25 @@
 <?php include('partials-front/navbar.php')?>
 
-		<!-- Start Hero Section -->
-			<div class="hero">
-				<div class="container">
-					<div class="row justify-content-between">
-						<div class="col-lg-5">
-							<div class="intro-excerpt">
-								<h1>Cart</h1>
-							</div>
-						</div>
-						<div class="col-lg-7">
-							
-						</div>
-					</div>
-				</div>
-			</div>
-		<!-- End Hero Section -->
+<!-- Start Hero Section -->
+<div class="hero">
+    <div class="container">
+        <div class="row justify-content-between">
+            <div class="col-lg-5">
+                <div class="intro-excerpt">
+                    <h1>Cart</h1>
+                </div>
+            </div>
+            <div class="col-lg-7">
 
-		
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Hero Section -->
 
-		<div class="untree_co-section before-footer-section">
-            <div class="container">
-            <div class="row mb-5">
+<div class="untree_co-section before-footer-section">
+    <div class="container">
+        <div class="row mb-5">
             <form class="col-md-12" method="post">
                 <div class="site-blocks-table">
                     <table class="table">
@@ -38,7 +36,6 @@
                         <tbody>
                             <?php
                             if(isset($_SESSION['user'])) {
-                                // Retrieve the user ID from the session
                                 $username = $_SESSION['user'];
                                 $sql = "SELECT id FROM tbl_user WHERE username = '$username'";
                                 $res = mysqli_query($conn, $sql);
@@ -47,17 +44,16 @@
                                     $row = mysqli_fetch_assoc($res);
                                     $userId = $row['id'];
 
-                                    // Query to fetch items from cart for the user
+                                    $subtotal = 0; // Initialize subtotal variable
+
                                     $sql_cart = "SELECT * FROM tbl_cart WHERE user_id = '$userId'";
                                     $res_cart = mysqli_query($conn, $sql_cart);
 
                                     if ($res_cart && mysqli_num_rows($res_cart) > 0) {
                                         while ($row_cart = mysqli_fetch_assoc($res_cart)) {
-                                            // Fetch product details
                                             $productId = $row_cart['product_id'];
                                             $qty = $row_cart['qty'];
-                                            
-                                            // Query to fetch product details based on product ID
+
                                             $sql_product = "SELECT * FROM tbl_product WHERE id = '$productId'";
                                             $res_product = mysqli_query($conn, $sql_product);
 
@@ -68,6 +64,9 @@
                                                 $image_name = $row_product['image_name'];
                                                 $total = $price * $qty;
                                                 $category_id = $row_product['category_id'];
+
+                                                // Add item total to subtotal
+                                                $subtotal += $total;
                                             ?>
                                                 <tr>
                                                     <td class="product-thumbnail">
@@ -94,6 +93,9 @@
                                                 echo "<tr><td colspan='6'>Product details not found.</td></tr>";
                                             }
                                         }
+
+                                        // Calculate total with any additional charges or discounts
+                                        $total = $subtotal; // For now, total is same as subtotal
                                     } else {
                                         echo "<tr><td colspan='6'>No items in the cart.</td></tr>";
                                     }
@@ -108,56 +110,44 @@
             </form>
         </div>
         
-              <div class="row">
-                <div class="col-md-6">
-                  <div class="row">
-                    <div class="col-md-12">
-                      <label class="text-black h4" for="coupon">Coupon</label>
-                      <p>Enter your coupon code if you have one.</p>
-                    </div>
-                    <div class="col-md-8 mb-3 mb-md-0">
-                      <input type="text" class="form-control py-3" id="coupon" placeholder="Coupon Code">
-                    </div>
-                    <div class="col-md-4">
-                      <button class="btn btn-black">Apply Coupon</button>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-6 pl-5">
-                  <div class="row justify-content-end">
-                    <div class="col-md-7">
-                      <div class="row">
-                        <div class="col-md-12 text-right border-bottom mb-5">
-                          <h3 class="text-black h4 text-uppercase">Cart Totals</h3>
-                        </div>
-                      </div>
-                      <div class="row mb-3">
-                        <div class="col-md-6">
-                          <span class="text-black">Subtotal</span>
-                        </div>
-                        <div class="col-md-6 text-right">
-                          <strong class="text-black">$230.00</strong>
-                        </div>
-                      </div>
-                      <div class="row mb-5">
-                        <div class="col-md-6">
-                          <span class="text-black">Total</span>
-                        </div>
-                        <div class="col-md-6 text-right">
-                          <strong class="text-black">$230.00</strong>
-                        </div>
-                      </div>
-        
-                      <div class="row">
-                        <div class="col-md-12">
-                          <button class="btn btn-black btn-lg py-3 btn-block" onclick="window.location='checkout.php'">Proceed To Checkout</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+        <div class="row">
+            <div class="col-md-6">
             </div>
-          </div>
-		
-		  <?php include('partials-front/footer.php')?>
+            <div class="col-md-6 pl-5">
+                <div class="row justify-content-end">
+                    <div class="col-md-7">
+                        <div class="row">
+                            <div class="col-md-12 text-right border-bottom mb-5">
+                                <h3 class="text-black h4 text-uppercase">Cart Totals</h3>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <span class="text-black">Subtotal</span>
+                            </div>
+                            <div class="col-md-6 text-right">
+                                <strong class="text-black">$<?php echo $subtotal; ?></strong>
+                            </div>
+                        </div>
+                        <div class="row mb-5">
+                            <div class="col-md-6">
+                                <span class="text-black">Total</span>
+                            </div>
+                            <div class="col-md-6 text-right">
+                                <strong class="text-black">$<?php echo $total; ?></strong>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <button class="btn btn-black btn-lg py-3 btn-block" onclick="window.location='checkout.php'">Proceed To Checkout</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<?php include('partials-front/footer.php')?>
