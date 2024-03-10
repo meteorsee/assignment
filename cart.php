@@ -21,84 +21,95 @@
 
 		<div class="untree_co-section before-footer-section">
             <div class="container">
-              <div class="row mb-5">
-                <form class="col-md-12" method="post">
-                  <div class="site-blocks-table">
+            <div class="row mb-5">
+            <form class="col-md-12" method="post">
+                <div class="site-blocks-table">
                     <table class="table">
-                      <thead>
-                        <tr>
-                          <th class="product-thumbnail">Image</th>
-                          <th class="product-name">Product</th>
-                          <th class="product-price">Price</th>
-                          <th class="product-quantity">Quantity</th>
-                          <th class="product-total">Total</th>
-                          <th class="product-remove">Remove</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td class="product-thumbnail">
-                            <img src="images/product-1.png" alt="Image" class="img-fluid">
-                          </td>
-                          <td class="product-name">
-                            <h2 class="h5 text-black">Product 1</h2>
-                          </td>
-                          <td>$49.00</td>
-                          <td>
-                            <div class="input-group mb-3 d-flex align-items-center quantity-container" style="max-width: 120px;">
-                              <div class="input-group-prepend">
-                                <button class="btn btn-outline-black decrease" type="button">&minus;</button>
-                              </div>
-                              <input type="text" class="form-control text-center quantity-amount" value="1" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
-                              <div class="input-group-append">
-                                <button class="btn btn-outline-black increase" type="button">&plus;</button>
-                              </div>
-                            </div>
-        
-                          </td>
-                          <td>$49.00</td>
-                          <td><a href="#" class="btn btn-black btn-sm">X</a></td>
-                        </tr>
-        
-                        <tr>
-                          <td class="product-thumbnail">
-                            <img src="images/product-2.png" alt="Image" class="img-fluid">
-                          </td>
-                          <td class="product-name">
-                            <h2 class="h5 text-black">Product 2</h2>
-                          </td>
-                          <td>$49.00</td>
-                          <td>
-                            <div class="input-group mb-3 d-flex align-items-center quantity-container" style="max-width: 120px;">
-                              <div class="input-group-prepend">
-                                <button class="btn btn-outline-black decrease" type="button">&minus;</button>
-                              </div>
-                              <input type="text" class="form-control text-center quantity-amount" value="1" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
-                              <div class="input-group-append">
-                                <button class="btn btn-outline-black increase" type="button">&plus;</button>
-                              </div>
-                            </div>
-        
-                          </td>
-                          <td>$49.00</td>
-                          <td><a href="#" class="btn btn-black btn-sm">X</a></td>
-                        </tr>
-                      </tbody>
+                        <thead>
+                            <tr>
+                                <th class="product-thumbnail">Image</th>
+                                <th class="product-name">Product</th>
+                                <th class="product-price">Price</th>
+                                <th class="product-quantity">Quantity</th>
+                                <th class="product-total">Total</th>
+                                <th class="product-remove">Remove</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            if(isset($_SESSION['user'])) {
+                                // Retrieve the user ID from the session
+                                $username = $_SESSION['user'];
+                                $sql = "SELECT id FROM tbl_user WHERE username = '$username'";
+                                $res = mysqli_query($conn, $sql);
+
+                                if ($res && mysqli_num_rows($res) > 0) {
+                                    $row = mysqli_fetch_assoc($res);
+                                    $userId = $row['id'];
+
+                                    // Query to fetch items from cart for the user
+                                    $sql_cart = "SELECT * FROM tbl_cart WHERE user_id = '$userId'";
+                                    $res_cart = mysqli_query($conn, $sql_cart);
+
+                                    if ($res_cart && mysqli_num_rows($res_cart) > 0) {
+                                        while ($row_cart = mysqli_fetch_assoc($res_cart)) {
+                                            // Fetch product details
+                                            $productId = $row_cart['product_id'];
+                                            $qty = $row_cart['qty'];
+                                            
+                                            // Query to fetch product details based on product ID
+                                            $sql_product = "SELECT * FROM tbl_product WHERE id = '$productId'";
+                                            $res_product = mysqli_query($conn, $sql_product);
+
+                                            if ($res_product && mysqli_num_rows($res_product) > 0) {
+                                                $row_product = mysqli_fetch_assoc($res_product);
+                                                $title = $row_product['title'];
+                                                $price = $row_product['price'];
+                                                $image_name = $row_product['image_name'];
+                                                $total = $price * $qty;
+                                                $category_id = $row_product['category_id'];
+                                            ?>
+                                                <tr>
+                                                    <td class="product-thumbnail">
+                                                        <?php if($image_name != ""): ?>
+                                                            <img src="<?php echo SITEURL; ?>images/products/<?php echo $image_name; ?>" width="100px">
+                                                        <?php else: ?>
+                                                            <div class='error'>No Image Available.</div>
+                                                        <?php endif; ?>
+                                                    </td>
+                                                    <td class="product-name">
+                                                        <h2 class="h5 text-black"><?php echo $title; ?></h2>
+                                                    </td>
+                                                    <td><?php echo $price; ?></td>
+                                                    <td>
+                                                        <div class="input-group mb-3 d-flex align-items-center quantity-container" style="max-width: 120px;">
+                                                            <input type="text" class="form-control text-center quantity-amount" value="<?php echo $qty; ?>" readonly>
+                                                        </div>
+                                                    </td>
+                                                    <td><?php echo $total; ?></td>
+                                                    <td><a href="delete-from-cart.php?id=<?php echo $productId; ?>" class="btn btn-black btn-sm">Remove</a></td>
+                                                </tr>
+                                            <?php
+                                            } else {
+                                                echo "<tr><td colspan='6'>Product details not found.</td></tr>";
+                                            }
+                                        }
+                                    } else {
+                                        echo "<tr><td colspan='6'>No items in the cart.</td></tr>";
+                                    }
+                                } else {
+                                    echo "<tr><td colspan='6'>User information not found.</td></tr>";
+                                }
+                            }
+                            ?>
+                        </tbody>
                     </table>
-                  </div>
-                </form>
-              </div>
+                </div>
+            </form>
+        </div>
         
               <div class="row">
                 <div class="col-md-6">
-                  <div class="row mb-5">
-                    <div class="col-md-6 mb-3 mb-md-0">
-                      <button class="btn btn-black btn-sm btn-block">Update Cart</button>
-                    </div>
-                    <div class="col-md-6">
-                      <button class="btn btn-outline-black btn-sm btn-block">Continue Shopping</button>
-                    </div>
-                  </div>
                   <div class="row">
                     <div class="col-md-12">
                       <label class="text-black h4" for="coupon">Coupon</label>

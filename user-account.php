@@ -19,6 +19,7 @@
     if($result) {
         // Fetch user data
         $row = mysqli_fetch_assoc($result);
+        $id = $row['id'];
         $first_name = $row['first_name'];
         $last_name = $row['last_name'];
         $phone_no = $row['phone_no'];
@@ -29,14 +30,14 @@
     }
 
     // Fetch past purchases (sample query, adjust as per your database structure)
-    // $pastPurchases = []; // Array to hold past purchases
-    // $queryPastPurchases = "SELECT * FROM tbl_order WHERE id = '$id'";
-    // $resultPastPurchases = mysqli_query($conn, $queryPastPurchases);
-    // if($resultPastPurchases && mysqli_num_rows($resultPastPurchases) > 0) {
-    //     while($row = mysqli_fetch_assoc($resultPastPurchases)) {
-    //         $pastPurchases[] = $row;
-    //     }
-    // }
+    $pastPurchases = []; // Array to hold past purchases
+    $queryPastPurchases = "SELECT * FROM tbl_order WHERE id = '$id'";
+    $resultPastPurchases = mysqli_query($conn, $queryPastPurchases);
+    if($resultPastPurchases && mysqli_num_rows($resultPastPurchases) > 0) {
+        while($row = mysqli_fetch_assoc($resultPastPurchases)) {
+            $pastPurchases[] = $row;
+        }
+    }
 
     // Logout process
     if(isset($_POST['logout'])) {
@@ -49,57 +50,71 @@
     }
 ?>
 
-    <title>User Account</title>
-    <!-- Include your CSS files here -->
-    <style>
-        
-        .container-acc {
-            display: flex;
-            justify-content: space-between;
-            max-width: 1200px;
-            margin: 50px auto;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
+<title>User Account</title>
+<!-- Include your CSS files here -->
+<style>
+    .container-acc {
+        display: flex;
+        justify-content: space-between;
+        max-width: 1200px;
+        margin: 50px auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
 
-        .sidebar {
-            width: 20%;
-        }
+    .sidebar {
+        width: 20%;
+    }
 
-        .main-content {
-            width: 75%;
-        }
+    .main-content {
+        width: 75%;
+    }
 
-        h1-acc {
-            color: #333;
-            margin-top: 0;
-        }
+    h1-acc {
+        color: #333;
+        margin-top: 0;
+    }
 
-        p-acc {
-            color: #555;
-        }
+    p-acc {
+        color: #555;
+    }
 
-        .sidebar ul {
-            list-style-type: none;
-            padding: 0;
-        }
+    .sidebar ul {
+        list-style-type: none;
+        padding: 0;
+    }
 
-        .sidebar ul li {
-            margin-bottom: 10px;
-        }
+    .sidebar ul li {
+        margin-bottom: 10px;
+    }
 
-        .sidebar ul li a {
-            text-decoration: none;
-            color: #333;
-        }
+    .sidebar ul li a {
+        text-decoration: none;
+        color: #333;
+    }
 
-        .sidebar ul li a:hover {
-            color: #4caf50;
-        }
-    </style>
+    .sidebar ul li a:hover {
+        color: #4caf50;
+    }
+</style>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var pastOrdersLink = document.querySelector('a[href="#orders"]');
+        var mainContentHeading = document.querySelector('.main-content h1');
+
+        pastOrdersLink.addEventListener('click', function (event) {
+            event.preventDefault();
+            mainContentHeading.textContent = "Past Purchases";
+            // You can load past purchases dynamically here using AJAX if needed
+        });
+    });
+</script>
+
 </head>
+
 <body>
     <div class="container-acc">
         <div class="sidebar">
@@ -117,7 +132,7 @@
             </form>
         </div>
         <div class="main-content">
-            <h1>Welcome to Your Account, <?php echo $first_name; ?>!</h1>
+            <h1 class="h1-acc">Welcome to Your Account, <?php echo $first_name; ?>!</h1>
             <!-- Display user information -->
             <p><strong>First Name:</strong> <?php echo $first_name; ?></p>
             <p><strong>Last Name:</strong> <?php echo $last_name; ?></p>
@@ -126,7 +141,7 @@
             <!-- Add more user information as needed -->
 
             <!-- Display past purchases -->
-            <h2 id="orders">Past Purchases</h2>
+            <h2 id="orders">Past Orders</h2>
             <ul>
                 <?php foreach($pastPurchases as $purchase): ?>
                     <li><?php echo $purchase['product_name']; ?> - <?php echo $purchase['purchase_date']; ?></li>
