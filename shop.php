@@ -13,7 +13,7 @@
 
             </div>
         </div>
-        <!-- fOOD sEARCH Section Starts Here -->
+        <!-- Product Search Section Starts Here -->
         <section class="product-search text-center">
             <div class="container">
                 <form action="<?php echo SITEURL; ?>product-search.php" method="POST">
@@ -22,7 +22,7 @@
                 </form>
             </div>
         </section>
-        <!-- fOOD sEARCH Section Ends Here -->
+        <!-- Product Search Section Ends Here -->
     </div>
 </div>
 <!-- End Hero Section -->

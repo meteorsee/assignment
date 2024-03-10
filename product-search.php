@@ -18,8 +18,7 @@
         //$search = $_POST['search'];
         $search = mysqli_real_escape_string($conn, $_POST["search"]);
         ?>
-        <h2>Foods on Your Search <a href="#" class="text-white">"
-                <?php echo $search; ?>"
+        <h2>Product on Your Search <a href="#" class="text-white">"<?php echo $search; ?>"
             </a></h2>
     </div>
 </div>
@@ -61,7 +60,7 @@
                             echo "<div class='error'>Image Not Available</div>";
                         } else {
                             ?>
-                            <img src="<?php echo SITEURL; ?>images/products/<?php echo $image_name; ?>" alt="Chicken Hawaian Pizza"
+                            <img src="<?php echo SITEURL; ?>images/products/<?php echo $image_name; ?>" 
                                 class="img-fluid product-thumbnail">
                             <?php
                         }
@@ -80,7 +79,7 @@
                         </p>
                         <br>
 
-                        <a href="<?php echo SITEURL ?>order.php?product_id=<?php echo $id; ?>" class="btn btn-primary">Add to Cart</a>
+                        <a class="btn btn-primary" href="<?php echo SITEURL; ?>add-to-cart.php?id=<?php echo $id; ?>" class="add-to-cart-link"> Add to cart </a>
                     </div>
                 </div>
                 <?php
@@ -102,8 +101,3 @@
 <!-- Product Menu Section Ends Here -->
 
 <?php include("partials-front/footer.php"); ?>
-
-
-</body>
-
-</html>

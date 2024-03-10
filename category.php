@@ -37,7 +37,7 @@
 
                     <!-- Start Column 1 -->
                     <div class="col-12 col-md-4 col-lg-3 mb-5">
-                        <a class="product-item" href="<?php echo SITEURL; ?>category-foods.php?category_id=<?php echo $id ?>">
+                        <a class="product-item" href="<?php echo SITEURL; ?>category-product.php?category_id=<?php echo $id ?>">
                             <?php
                             if ($image_name == "") {
                                 // Display message
