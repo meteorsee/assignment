@@ -1,9 +1,9 @@
-<?php include('config/constants.php') ?>
+<?php include('../config/constants.php') ?>
 
 <html>
 <head>
     <title>Register - Food Order System</title>
-    <link rel="stylesheet" href="css/user-login-register.css">
+    <link rel="stylesheet" href="../css/user-login-register.css">
 </head>
 
 <body>
@@ -11,13 +11,7 @@
     <h1 class="text-center">Register</h1>
     <br><br>
 
-    <?php
-    if(isset($_SESSION['register'])){
-        echo $_SESSION['register'];
-        unset($_SESSION['register']);
-    }
-
-    ?>
+    
 
     <br><br>
     <!--START Registration Form-->
@@ -36,6 +30,7 @@
         <input type="password" name="confirm_password" placeholder="Enter Confirm Password"><br><br>
         <input type="submit" name="submit" value="Register" class="btn-primary">
         <br><br>
+        <p>Already have account? <a href="user-login.php">Login Now</a></p>
     </form>
     <!--END Registration Form-->
     <p class="text-center">Created by - <a href="www.meteor.com">Meteor</a></p>
@@ -81,11 +76,11 @@ if(isset($_POST['submit'])){
         if($res){
             // Registration successful
             $_SESSION['register'] = "<div class='success'>Registration Successful.</div>";
-            header('location:'.SITEURL.'/user-register.php');
+            header('location:'.SITEURL.'user/user-login.php');
         }else{
             // Registration failed
             $_SESSION['register'] = "<div class='error text-center'>Registration failed. Please try again.</div>";
-            header('location:'.SITEURL.'/user-register.php');
+            header('location:'.SITEURL.'user/user-register.php');
         }
     }
 }

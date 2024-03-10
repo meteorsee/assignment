@@ -1,9 +1,9 @@
-<?php include('config/constants.php') ?>
+<?php include('../config/constants.php') ?>
 
 <html>
     <head>
         <title>Login - Food Order System</title>
-        <link rel="stylesheet" href="css/user-login-register.css">
+        <link rel="stylesheet" href="../css/user-login-register.css">
     </head>
 
     <body>
@@ -17,12 +17,12 @@
                     unset($_SESSION['login']);
                 }
 
-                if(isset($_SESSION['no-login-message'])){
-                    echo $_SESSION['no-login-message'];
-                    unset($_SESSION['no-login-message']);
+                if(isset($_SESSION['register'])){
+                    echo $_SESSION['register'];
+                    unset($_SESSION['register']);
                 }
-
             ?>
+
             <br><br>
             <!--START Login Form-->
             <form action="" method="POST" class="text-center">
@@ -77,13 +77,16 @@
         if($count == 1){
             // User available
             $_SESSION['login'] = "<div class='success'>Login Successful.</div>";
-            $_SESSION["user"] = $username; // To check whether the user is logged in or not and logout will unset it
-
+            $_SESSION['user'] = $username; // To check whether the user is logged in or not and logout will unset it
             header('location:'.SITEURL);
+            exit();
+
         }else{
             // User not available
             $_SESSION['login'] = "<div class='error text-center'>Username or Password did not match.</div>";
-            header('location:'.SITEURL.'/user-login.php');
+            header('location:'.SITEURL.'user/user-login.php');
+            exit();
+
         }
 
     }
