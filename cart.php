@@ -35,6 +35,9 @@
                         </thead>
                         <tbody>
                             <?php
+                            $subtotal = 0; // Initialize subtotal variable
+                            $total = 0; // Initialize total variable
+
                             if(isset($_SESSION['user'])) {
                                 $username = $_SESSION['user'];
                                 $sql = "SELECT id FROM tbl_user WHERE username = '$username'";
@@ -43,8 +46,6 @@
                                 if ($res && mysqli_num_rows($res) > 0) {
                                     $row = mysqli_fetch_assoc($res);
                                     $userId = $row['id'];
-
-                                    $subtotal = 0; // Initialize subtotal variable
 
                                     $sql_cart = "SELECT * FROM tbl_cart WHERE user_id = '$userId'";
                                     $res_cart = mysqli_query($conn, $sql_cart);
@@ -63,7 +64,6 @@
                                                 $price = $row_product['price'];
                                                 $image_name = $row_product['image_name'];
                                                 $total = $price * $qty;
-                                                $category_id = $row_product['category_id'];
 
                                                 // Add item total to subtotal
                                                 $subtotal += $total;
@@ -102,6 +102,8 @@
                                 } else {
                                     echo "<tr><td colspan='6'>User information not found.</td></tr>";
                                 }
+                            } else {
+                                echo "<tr><td colspan='6'>Please login to view your cart.</td></tr>";
                             }
                             ?>
                         </tbody>
