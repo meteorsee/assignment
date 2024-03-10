@@ -38,8 +38,6 @@
                 <p>No Account yet? <a href="user-register.php">Register Now</a></p>
             </form>
             <!--END Login Form-->
-            <p class="text-center">Created by - <a href="www.meteor.com">Meteor Studio</a></p>
-
         </div>
 
     </body>

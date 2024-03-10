@@ -33,7 +33,6 @@
         <p>Already have account? <a href="user-login.php">Login Now</a></p>
     </form>
     <!--END Registration Form-->
-    <p class="text-center">Created by - <a href="www.meteor.com">Meteor</a></p>
 
 </div>
 
