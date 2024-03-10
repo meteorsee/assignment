@@ -1,4 +1,4 @@
-<?php  include('../config/constants.php');?>
+<?php include('../config/constants.php'); ?>
 
 <?php 
     // Check if the user is logged in
@@ -27,6 +27,16 @@
         // If the query fails, display an error message
         echo "Failed to fetch user data. Please try again.";
     }
+
+    // Logout process
+    if(isset($_POST['logout'])) {
+        // Destroy the session data
+        session_destroy();
+
+        // Redirect the user to the login page
+        header('location:'.SITEURL);
+        exit(); // Stop further execution
+    }
 ?>
 
 <!DOCTYPE html>
@@ -46,7 +56,10 @@
     <p><strong>Phone Number:</strong> <?php echo $phone_no; ?></p>
     <!-- Add more user information as needed -->
 
-    <!-- Add links or buttons for user actions (e.g., edit profile, change password, etc.) -->
+    <!-- Logout button -->
+    <form action="" method="post">
+        <input type="submit" name="logout" value="Logout">
+    </form>
 
     <!-- Include your footer here -->
 </body>
