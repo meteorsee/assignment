@@ -82,7 +82,7 @@
         }else{
             // User not available
             $_SESSION['login'] = "<div class='error text-center'>Username or Password did not match.</div>";
-            header('location:'.SITEURL.'user/user-login.php');
+            header('location:'.SITEURL.'user-login.php');
             exit();
 
         }
