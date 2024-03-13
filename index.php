@@ -4,16 +4,16 @@
 			<div class="hero">
 				<div class="container">
 					<div class="row justify-content-between">
-						<div class="col-lg-5">
+						<div class="col-lg-6">
 							<div class="intro-excerpt">
-								<h1>Elevate Your Phone Experience with <span clsas="d-block">Stylish Accessories</span></h1>
+								<h1>Elevate Your Phone with <span clsas="d-block">Stylish Accessories</span></h1>
 								<p class="mb-4">Explore our curated collection of high-quality phone accessories designed to complement your lifestyle.</p>
-								<p><a href="category.php" class="btn btn-secondary me-2">Shop Now</a><a href="shop.php" class="btn btn-white-outline">Explore Accessories</a></p>
+								<p><a href="category.php" class="btn btn-secondary me-2">Shop Now</a><a href="shop.php" class="btn btn-white-outline">Explore</a></p>
 							</div>
 						</div>
-						<div class="col-lg-7">
+						<div class="col-lg-5">
 							<div class="hero-img-wrap">
-								<img src="images/index.png" class="img-fluid" style="height: 700px;">
+								<img src="images/index.png" class="img-fluid" style="height: 600px;">
 							</div>
 						</div>
 					</div>
@@ -30,7 +30,7 @@
 					<div class="col-md-12 col-lg-3 mb-5 mb-lg-0">
 						<h2 class="mb-4 section-title">Crafted with Precision for Your Devices</h2>
 						<p class="mb-4">Discover our meticulously crafted phone accessories, tailored to enhance your device's functionality and style.</p>
-						<p><a href="category.php" class="btn">Explore Accessories</a></p>
+						<p><a href="category.php" class="btn">Explore</a></p>
 					</div> 
 					<!-- End Column 1 -->
 

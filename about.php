@@ -6,14 +6,9 @@
 					<div class="row justify-content-between">
 						<div class="col-lg-5">
 							<div class="intro-excerpt">
-								<h1>About Us</h1>
+								<h1>Learn about Gadget Galaxy</h1>
 								<p class="mb-4">Discover premium phone accessories designed to elevate your device experience at Gadget Galaxy. Explore our wide range of products crafted with precision and style.</p>
 								<p><a href="category.php" class="btn btn-secondary me-2">Shop Now</a><a href="shop.php" class="btn btn-white-outline">Explore</a></p>
-							</div>
-						</div>
-						<div class="col-lg-7">
-							<div class="hero-img-wrap">
-								<img src="images/couch.png" class="img-fluid">
 							</div>
 						</div>
 					</div>
@@ -26,10 +21,10 @@
 		<!-- Start Why Choose Us Section -->
 		<div class="why-choose-section">
 			<div class="container">
-				<div class="row justify-content-between align-items-center">
+				<div class="row justify-content-between">
 					<div class="col-lg-6">
 						<h2 class="section-title">Why Choose Us</h2>
-						<p>Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique.</p>
+						<p>At Gadget Galaxy, we're dedicated to providing exceptional service and premium products to our customers.</p>
 
 						<div class="row my-5">
 							<div class="col-6 col-md-6">
@@ -38,7 +33,7 @@
 										<img src="images/truck.svg" alt="Image" class="imf-fluid">
 									</div>
 									<h3>Fast &amp; Free Shipping</h3>
-									<p>Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate.</p>
+									<p>Enjoy swift delivery on all your orders.</p>
 								</div>
 							</div>
 
@@ -48,7 +43,7 @@
 										<img src="images/bag.svg" alt="Image" class="imf-fluid">
 									</div>
 									<h3>Easy to Shop</h3>
-									<p>Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate.</p>
+									<p>Navigate our user-friendly website and find the perfect accessories hassle-free.</p>
 								</div>
 							</div>
 
@@ -58,7 +53,7 @@
 										<img src="images/support.svg" alt="Image" class="imf-fluid">
 									</div>
 									<h3>24/7 Support</h3>
-									<p>Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate.</p>
+									<p>Our customer service team is here to assist you round the clock.</p>
 								</div>
 							</div>
 
@@ -68,7 +63,7 @@
 										<img src="images/return.svg" alt="Image" class="imf-fluid">
 									</div>
 									<h3>Hassle Free Returns</h3>
-									<p>Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate.</p>
+									<p>Not satisfied? We offer easy returns to ensure your peace of mind.</p>
 								</div>
 							</div>
 
@@ -157,11 +152,11 @@
 		
 
 		<!-- Start Testimonial Slider -->
-		<div class="testimonial-section before-footer-section">
+		<div class="testimonial-section">
 			<div class="container">
 				<div class="row">
 					<div class="col-lg-7 mx-auto text-center">
-						<h2 class="section-title">Testimonials</h2>
+						<h2 class="section-title">What Our Customers Say</h2>
 					</div>
 				</div>
 
@@ -182,7 +177,7 @@
 
 											<div class="testimonial-block text-center">
 												<blockquote class="mb-5">
-													<p>&ldquo;Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Integer convallis volutpat dui quis scelerisque.&rdquo;</p>
+													<p>&ldquo;I found exactly what I needed at Gadget Galaxy. Their wide selection of accessories and excellent customer service exceeded my expectations.&rdquo;</p>
 												</blockquote>
 
 												<div class="author-info">
@@ -205,7 +200,7 @@
 
 											<div class="testimonial-block text-center">
 												<blockquote class="mb-5">
-													<p>&ldquo;Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Integer convallis volutpat dui quis scelerisque.&rdquo;</p>
+												<p>&ldquo;I found exactly what I needed at Gadget Galaxy. Their wide selection of accessories and excellent customer service exceeded my expectations.&rdquo;</p>
 												</blockquote>
 
 												<div class="author-info">
@@ -228,7 +223,7 @@
 
 											<div class="testimonial-block text-center">
 												<blockquote class="mb-5">
-													<p>&ldquo;Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Integer convallis volutpat dui quis scelerisque.&rdquo;</p>
+												<p>&ldquo;I found exactly what I needed at Gadget Galaxy. Their wide selection of accessories and excellent customer service exceeded my expectations.&rdquo;</p>
 												</blockquote>
 
 												<div class="author-info">
