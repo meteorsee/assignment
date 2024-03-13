@@ -1,4 +1,4 @@
-<?php include('partials-front/navbar.php')?>
+<?php include('partials-front/navbar.php') ?>
 
 <!-- Start Hero Section -->
 <div class="hero">
@@ -38,7 +38,7 @@
                             $subtotal = 0; // Initialize subtotal variable
                             $total = 0; // Initialize total variable
 
-                            if(isset($_SESSION['user'])) {
+                            if (isset($_SESSION['user'])) {
                                 $username = $_SESSION['user'];
                                 $sql = "SELECT id FROM tbl_user WHERE username = '$username'";
                                 $res = mysqli_query($conn, $sql);
@@ -52,6 +52,7 @@
 
                                     if ($res_cart && mysqli_num_rows($res_cart) > 0) {
                                         while ($row_cart = mysqli_fetch_assoc($res_cart)) {
+                                            $cartId = $row_cart['id'];
                                             $productId = $row_cart['product_id'];
                                             $qty = $row_cart['qty'];
 
@@ -63,16 +64,16 @@
                                                 $title = $row_product['title'];
                                                 $price = $row_product['price'];
                                                 $image_name = $row_product['image_name'];
-                                                $total = $price * $qty;
+                                                $totalItem = $price * $qty;
 
                                                 // Add item total to subtotal
-                                                $subtotal += $total;
-                                            ?>
+                                                $subtotal += $totalItem;
+                            ?>
                                                 <tr>
                                                     <td class="product-thumbnail">
-                                                        <?php if($image_name != ""): ?>
+                                                        <?php if ($image_name != "") : ?>
                                                             <img src="<?php echo SITEURL; ?>images/products/<?php echo $image_name; ?>" width="100px">
-                                                        <?php else: ?>
+                                                        <?php else : ?>
                                                             <div class='error'>No Image Available.</div>
                                                         <?php endif; ?>
                                                     </td>
@@ -82,13 +83,15 @@
                                                     <td><?php echo $price; ?></td>
                                                     <td>
                                                         <div class="input-group mb-3 d-flex align-items-center quantity-container" style="max-width: 120px;">
-                                                            <input type="text" class="form-control text-center quantity-amount" value="<?php echo $qty; ?>" readonly>
+                                                            <button type="button" class="btn btn-sm btn-primary quantity-minus" data-cartid="<?php echo $cartId; ?>">-</button>
+                                                            <input type="text" class="form-control text-center quantity-amount" value="<?php echo $qty; ?>" data-cartid="<?php echo $cartId; ?>" readonly>
+                                                            <button type="button" class="btn btn-sm btn-primary quantity-plus" data-cartid="<?php echo $cartId; ?>">+</button>
                                                         </div>
                                                     </td>
-                                                    <td><?php echo $total; ?></td>
-                                                    <td><a href="delete-from-cart.php?id=<?php echo $productId; ?>" class="btn btn-black btn-sm">Remove</a></td>
+                                                    <td class="product-total"><?php echo $totalItem; ?></td>
+                                                    <td><a href="delete-from-cart.php?id=<?php echo $productId; ?>" class="btn btn-black btn-sm remove-btn">Remove</a></td>
                                                 </tr>
-                                            <?php
+                            <?php
                                             } else {
                                                 echo "<tr><td colspan='6'>Product details not found.</td></tr>";
                                             }
@@ -111,7 +114,7 @@
                 </div>
             </form>
         </div>
-        
+
         <div class="row">
             <div class="col-md-6">
             </div>
@@ -128,7 +131,7 @@
                                 <span class="text-black">Subtotal</span>
                             </div>
                             <div class="col-md-6 text-right">
-                                <strong class="text-black">$<?php echo $subtotal; ?></strong>
+                                <strong class="text-black subtotal"><?php echo $subtotal; ?></strong>
                             </div>
                         </div>
                         <div class="row mb-5">
@@ -136,7 +139,7 @@
                                 <span class="text-black">Total</span>
                             </div>
                             <div class="col-md-6 text-right">
-                                <strong class="text-black">$<?php echo $total; ?></strong>
+                                <strong class="text-black total"><?php echo $total; ?></strong>
                             </div>
                         </div>
 
@@ -152,4 +155,61 @@
     </div>
 </div>
 
-<?php include('partials-front/footer.php')?>
+<?php include('partials-front/footer.php') ?>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function() {
+        // Function to handle remove button click
+        $(".remove-btn").click(function(e) {
+            e.preventDefault(); // Prevent the default action of the link
+            var removeLink = $(this).attr('href'); // Get the href attribute
+
+            // Display confirmation prompt
+            if (confirm("Are you sure you want to remove this item from your cart?")) {
+                // If user confirms, proceed with the removal
+                window.location = removeLink;
+            }
+        });
+
+        $(".quantity-plus").click(function() {
+            var cartId = $(this).data('cartid');
+            $.ajax({
+                url: "increment-quantity.php",
+                type: "POST",
+                data: { cart_id: cartId },
+                success: function(data) {
+                    if (data !== "error") {
+                        $(".quantity-amount[data-cartid='" + cartId + "']").val(data);
+                        updateTotals();
+                    }
+                }
+            });
+        });
+
+        $(".quantity-minus").click(function() {
+            var cartId = $(this).data('cartid');
+            $.ajax({
+                url: "decrement-quantity.php",
+                type: "POST",
+                data: { cart_id: cartId },
+                success: function(data) {
+                    if (data !== "error") {
+                        $(".quantity-amount[data-cartid='" + cartId + "']").val(data);
+                        updateTotals();
+                    }
+                }
+            });
+        });
+
+        function updateTotals() {
+            var subtotal = 0;
+            $(".product-total").each(function() {
+                subtotal += parseFloat($(this).text());
+            });
+            $(".subtotal").text(subtotal);
+            $(".total").text(subtotal); // For now, total is same as subtotal
+        }
+    });
+</script>
+

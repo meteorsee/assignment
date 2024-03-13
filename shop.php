@@ -48,7 +48,7 @@
                     ?>
                     <!-- Start Column 1 -->
                     <div class="col-12 col-md-4 col-lg-3 mb-5">
-                        <a class="product-item" href="<?php echo SITEURL; ?>add-to-cart.php?id=<?php echo $id; ?>" class="add-to-cart-link">
+                        <a class="product-item add-to-cart-link " href="<?php echo SITEURL; ?>add-to-cart.php?id=<?php echo $id; ?>" >
                             <?php
                             if ($image_name == "") {
                                 // Display message
@@ -85,29 +85,32 @@
 
 <?php include("partials-front/footer.php"); ?>
 
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        var addToCartLinks = document.querySelectorAll('.add-to-cart-link');
-        addToCartLinks.forEach(function (link) {
-            link.addEventListener('click', function (event) {
-                event.preventDefault(); // Prevent the default link behavior
-                var productId = link.getAttribute('href').split('=')[1];
-                addToCart(productId);
-            });
-        });
 
-        function addToCart(productId) {
-            // Send AJAX request to add the item to the cart
-            var xhr = new XMLHttpRequest();
-            xhr.open('POST', 'add-to-cart.php', true);
-            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState === 4 && xhr.status === 200) {
-                    // Handle the response, e.g., update cart icon or display a success message
-                    console.log(xhr.responseText);
-                }
-            };
-            xhr.send('id=' + encodeURIComponent(productId));
-        }
+<script>
+   $(document).ready(function() {
+    $('.add-to-cart-link').on('click', function(event) {
+    event.preventDefault();
+    var productId = $(this).data('productid');
+    console.log('Product ID:', productId); // Temporary log statement for debugging
+    addToCart(productId);
     });
+
+
+    function addToCart(productId) {
+        // Send AJAX request to add the item to the cart
+        $.ajax({
+            url: 'add-to-cart.php',
+            method: 'POST',
+            data: { id: productId },
+            success: function(response) {
+                // Handle the response, e.g., update cart icon or display a success message
+                console.log(response);
+            },
+            error: function(xhr, status, error) {
+                // Handle any errors
+                console.error(xhr.responseText);
+            }
+        });
+    }
+});
 </script>

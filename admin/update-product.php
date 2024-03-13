@@ -120,7 +120,7 @@
                 <tr>
                     <td>Active: </td>
                     <td><input <?php if($active=="Yes"){echo "Checked"; }?> type="radio" name="active" value="Yes">Yes</td>
-                    <td><input <?php if($active=="Yes"){echo "Checked"; }?> type="radio" name="active" value="Yes">No</td>
+                    <td><input <?php if($active=="No"){echo "Checked"; }?> type="radio" name="active" value="No">No</td>
 
                 </tr>
                 <tr>

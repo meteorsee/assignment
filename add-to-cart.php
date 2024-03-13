@@ -38,7 +38,8 @@ if(isset($_SESSION['user'])) {
 
                 if ($updateCartItemResult) {
                     // Quantity updated successfully
-                    echo "Quantity updated successfully.";
+                    //echo "Quantity updated successfully.";
+                    header('location:'. 'shop.php');
                 } else {
                     // Failed to update quantity
                     echo "Failed to update quantity. Please try again.";
