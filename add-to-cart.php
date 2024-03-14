@@ -69,7 +69,8 @@ if(isset($_SESSION['user'])) {
 
                     if ($insertCartItemResult) {
                         // Item added to cart successfully
-                        echo "Item added to cart successfully.";
+                        //echo "Item added to cart successfully.";
+                        header('location:'. 'shop.php');
                     } else {
                         // Failed to add item to cart
                         echo "Failed to add item to cart. Please try again.";

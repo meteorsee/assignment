@@ -1,6 +1,6 @@
 <?php include('partials-front/navbar.php'); ?>
 
-<html>
+
     <head>
         <title>Login - Food Order System</title>
         <link rel="stylesheet" href="css/user-login-register.css">

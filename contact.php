@@ -160,8 +160,10 @@ if (isset($_SESSION['contact'])) {
                   header('location:' . SITEURL . '/contact.php');
                 }
               } else {
-                // 
-              
+                // Display error message
+                  // Redirect to Manage Admin Page with error message
+                  $_SESSION['contact'] = "<div class='error text-center'>Failed to snd Contact Message.</div>";
+                  header('location:' . SITEURL . '/contact.php');
               }
               ?>
 

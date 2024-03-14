@@ -88,7 +88,7 @@
                                                             <button type="button" class="btn btn-sm btn-primary quantity-plus" data-cartid="<?php echo $cartId; ?>">+</button>
                                                         </div>
                                                     </td>
-                                                    <td class="product-total"><?php echo $totalItem; ?></td>
+                                                    <td class="product-total-sub"><?php echo $totalItem; ?></td>
                                                     <td><a href="delete-from-cart.php?id=<?php echo $productId; ?>" class="btn btn-black btn-sm remove-btn">Remove</a></td>
                                                 </tr>
                             <?php
@@ -204,11 +204,29 @@
 
         function updateTotals() {
             var subtotal = 0;
-            $(".product-total").each(function() {
-                subtotal += parseFloat($(this).text());
+            $(".product-total-sub").each(function() {
+                var price = parseFloat($(this).prev().prev().text()); // Get the price of the product
+                var quantity = parseFloat($(this).prev().find('.quantity-amount').val()); // Get the updated quantity
+
+                // Check if the quantity is a valid number
+                if (!isNaN(quantity)) {
+                    var totalItem = price * quantity; // Calculate the new total for this item
+                    subtotal += totalItem; // Add the item total to the subtotal
+                    $(this).text(totalItem); // Update the displayed total for this item
+                } else {
+                    $(this).text(0); // Set the total to 0 if the quantity is not a number
+                }
             });
+
+            // Update the subtotal
             $(".subtotal").text(subtotal);
-            $(".total").text(subtotal); // For now, total is same as subtotal
+        
+            // Update the total only if the subtotal is a valid number
+        if (!isNaN(subtotal)) {
+                $(".total").text(subtotal);
+            } else {
+                $(".total").text(0); // Set the total to 0 if the subtotal is not a number
+            }
         }
     });
 </script>
