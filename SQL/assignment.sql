@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 11, 2024 at 03:48 AM
+-- Generation Time: Mar 14, 2024 at 02:39 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -68,12 +68,11 @@ CREATE TABLE `tbl_cart` (
 --
 
 INSERT INTO `tbl_cart` (`id`, `user_id`, `product_id`, `title`, `price`, `image_name`, `category_id`, `created_at`, `qty`, `total`) VALUES
-(20, 3, 18, 'Casetify Black Kingsnake', 60, '', 19, '2024-03-10 16:54:49', 3, 180),
-(21, 3, 19, 'Casetify Gravity 3.0', 100, '', 19, '2024-03-10 16:55:07', 1, 100),
-(22, 3, 21, 'Casetify PP-0008', 88, '', 19, '2024-03-10 17:54:05', 2, 176),
-(23, 3, 22, 'Casetify Dont Be Afraid', 77, '', 19, '2024-03-10 17:54:17', 1, 77),
-(24, 6, 18, 'Casetify Black Kingsnake', 60, '', 19, '2024-03-10 17:54:43', 2, 120),
-(25, 6, 20, 'Casetify Travel Lover by Nawara Studio', 99, '', 19, '2024-03-11 03:32:17', 1, 99);
+(21, 3, 19, 'Casetify Gravity 3.0', 100, '', 19, '2024-03-10 16:55:07', 11, 1100),
+(22, 3, 21, 'Casetify PP-0008', 88, '', 19, '2024-03-10 17:54:05', 4, 352),
+(25, 6, 20, 'Casetify Travel Lover by Nawara Studio', 99, '', 19, '2024-03-11 03:32:17', 1, 99),
+(29, 3, 22, 'Casetify Dont Be Afraid', 77, '', 19, '2024-03-14 11:05:13', 3, 231),
+(30, 3, 23, 'Casetify White', 50, '', 19, '2024-03-14 11:06:14', 3, 150);
 
 -- --------------------------------------------------------
 
@@ -122,7 +121,7 @@ CREATE TABLE `tbl_contact` (
 --
 
 INSERT INTO `tbl_contact` (`id`, `first_name`, `last_name`, `phone_no`, `message_date`, `email`, `message`, `status`) VALUES
-(16, 'Meteor', 'See', '+60193309187', '2024-03-10 08:36:38', 'meteorsee1108@gmail.com', 'test1', 'Replied'),
+(16, 'Meteor', 'See', '+60193309187', '2024-03-10 08:36:38', 'meteorsee1108@gmail.com', 'test1', 'Pending Reply'),
 (17, 'See', 'Lek', '193309187', '2024-03-10 08:39:11', 'meteorsee1108@1utar.my', 'test2', 'Received');
 
 -- --------------------------------------------------------
@@ -143,12 +142,11 @@ CREATE TABLE `tbl_order` (
   `first_name` varchar(150) NOT NULL,
   `last_name` varchar(255) NOT NULL,
   `address` varchar(255) NOT NULL,
-  `apartment` varchar(150) NOT NULL,
   `state` varchar(255) NOT NULL,
   `zipcode` int(5) NOT NULL,
   `email` varchar(255) NOT NULL,
   `phone` varchar(255) NOT NULL,
-  `order)notes` varchar(255) NOT NULL,
+  `order_notes` varchar(255) NOT NULL,
   `coupon` varchar(255) NOT NULL,
   `bank_no` int(20) NOT NULL,
   `bank_image_name` varchar(255) NOT NULL,
@@ -179,7 +177,7 @@ CREATE TABLE `tbl_product` (
 INSERT INTO `tbl_product` (`id`, `title`, `description`, `price`, `image_name`, `category_id`, `featured`, `active`) VALUES
 (18, 'Casetify Black Kingsnake', 'Black on the back.', 60.00, 'Product-3288.jpg', 19, 'Yes', 'Yes'),
 (19, 'Casetify Gravity 3.0', 'Designed with Space element. Magsafe Compatible.', 100.00, 'Product-9178.jpg', 19, 'Yes', 'Yes'),
-(20, 'Casetify Travel Lover by Nawara Studio', 'Designed with Teen Element', 99.00, 'Product-7571.jpg', 19, 'Yes', 'Yes'),
+(20, 'Casetify Travel Lover', 'Designed with Teen Element', 99.00, 'Product-7571.jpg', 19, 'Yes', 'Yes'),
 (21, 'Casetify PP-0008', 'Designed with Parcel element. Magsafe Compatible.', 88.00, 'Product-4768.jpg', 19, 'Yes', 'Yes'),
 (22, 'Casetify Dont Be Afraid', 'Designed with Big Words', 77.00, 'Product-1887.jpg', 19, 'Yes', 'Yes'),
 (23, 'Casetify White', 'White Case.', 50.00, 'Product-9505.jpg', 19, 'Yes', 'Yes'),
@@ -196,7 +194,7 @@ INSERT INTO `tbl_product` (`id`, `title`, `description`, `price`, `image_name`, 
 (34, 'Micro-USB Cable', 'Deprecated Product.', 10.00, 'Product-1349.png', 20, 'Yes', 'Yes'),
 (35, 'Lighting Charging Cable', 'Lighting to Type-A.', 20.00, 'Product-3177.jpg', 20, 'Yes', 'Yes'),
 (36, 'Type C Charger', 'Single Type C port', 20.00, 'Product-1315.png', 22, 'Yes', 'Yes'),
-(37, 'USB A Charger', 'Have two USB Type A ports.', 25.00, 'Product-7819.png', 22, 'Yes', 'Yes'),
+(37, 'Anker USB A Charger', 'Have two USB Type A ports.', 25.00, 'Product-7819.png', 22, 'Yes', 'Yes'),
 (38, 'Powerlogy Charger', 'Have Multiple ports. Two Type C and two Type A.', 100.00, 'Product-4480.png', 22, 'Yes', 'Yes'),
 (39, 'Normal USB Charger', 'Single Type A port.', 10.00, 'Product-2602.png', 22, 'Yes', 'Yes'),
 (40, 'Anker iQ GAN Charger', '45W iQ single Type C port charger.', 45.00, 'Product-8878.png', 22, 'Yes', 'Yes'),
@@ -298,7 +296,7 @@ ALTER TABLE `tbl_admin`
 -- AUTO_INCREMENT for table `tbl_cart`
 --
 ALTER TABLE `tbl_cart`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `tbl_category`
