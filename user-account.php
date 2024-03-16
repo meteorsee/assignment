@@ -1,155 +1,192 @@
 <?php include('partials-front/navbar.php'); ?>
+<?php
+// Check if the user is logged in
+if (!isset($_SESSION['user'])) {
+    // If the user is not logged in, redirect them to the login page
+    header('location: user-login.php');
+    exit(); // Stop further execution
+}
 
-<?php 
-    // Check if the user is logged in
-    if(!isset($_SESSION['user'])) {
-        // If the user is not logged in, redirect them to the login page
-        header('location: user-login.php');
-        exit(); // Stop further execution
-    }
+// Get the logged-in user's username
+$username = $_SESSION['user'];
 
-    // Get the logged-in user's username
-    $username = $_SESSION['user'];
+// Query to fetch user data from tbl_user
+$sql = "SELECT * FROM tbl_user WHERE username='$username'";
+$result = mysqli_query($conn, $sql);
 
-    // Query to fetch user data from tbl_user
-    $sql = "SELECT * FROM tbl_user WHERE username='$username'";
-    $result = mysqli_query($conn, $sql);
+// Check if the query was successful
+if ($result) {
+    // Fetch user data
+    $row = mysqli_fetch_assoc($result);
+    $id = $row['id'];
+    $first_name = $row['first_name'];
+    $last_name = $row['last_name'];
+    $phone_no = $row['phone_no'];
+    // You can fetch other user data here as needed
+} else {
+    // If the query fails, display an error message
+    echo "Failed to fetch user data. Please try again.";
+}
 
-    // Check if the query was successful
-    if($result) {
-        // Fetch user data
-        $row = mysqli_fetch_assoc($result);
-        $id = $row['id'];
-        $first_name = $row['first_name'];
-        $last_name = $row['last_name'];
-        $phone_no = $row['phone_no'];
-        // You can fetch other user data here as needed
-    } else {
-        // If the query fails, display an error message
-        echo "Failed to fetch user data. Please try again.";
-    }
 
-    // Fetch past purchases (sample query, adjust as per your database structure)
-    $pastPurchases = []; // Array to hold past purchases
-    $queryPastPurchases = "SELECT * FROM tbl_order WHERE id = '$id'";
-    $resultPastPurchases = mysqli_query($conn, $queryPastPurchases);
-    if($resultPastPurchases && mysqli_num_rows($resultPastPurchases) > 0) {
-        while($row = mysqli_fetch_assoc($resultPastPurchases)) {
-            $pastPurchases[] = $row;
-        }
-    }
+// Logout process
+if (isset($_POST['logout'])) {
+    // Destroy the session data
+    session_destroy();
 
-    // Logout process
-    if(isset($_POST['logout'])) {
-        // Destroy the session data
-        session_destroy();
-
-        // Redirect the user to the login page
-        header('location: user-login.php');
-        exit(); // Stop further execution
-    }
+    // Redirect the user to the login page
+    header('location: user-login.php');
+    exit(); // Stop further execution
+}
 ?>
 
-<title>User Account</title>
-<!-- Include your CSS files here -->
-<style>
-    .container-acc {
-        display: flex;
-        justify-content: space-between;
-        max-width: 1200px;
-        margin: 50px auto;
-        background-color: #fff;
-        padding: 20px;
-        border-radius: 8px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
+<div class="container-acc">
+    <div class="sidebar">
+        <h2>My Account</h2>
+        <ul>
+            <li><a href="#" onclick="showSection('profile')">My Profile</a></li>
+            <li><a href="#" onclick="showSection('orders')">Past Orders</a></li>
+            <li><a href="#" onclick="showSection('password')">Change Password</a></li>
+            <!-- Add more links as needed -->
+        </ul>
 
-    .sidebar {
-        width: 20%;
-    }
+        <!-- Logout button -->
+        <form action="" method="post" class="logout-form">
+            <input type="submit" name="logout" value="Logout">
+        </form>
+    </div>
+    <div class="main-content">
+        <div id="profile" style="display: none;">
+            <!-- Profile content goes here -->
+            <h1>Welcome to Your Profile,
+                <?php echo $first_name; ?>!
+            </h1>
+            <p><strong>First Name:</strong>
+                <?php echo $first_name; ?>
+            </p>
+            <p><strong>Last Name:</strong>
+                <?php echo $last_name; ?>
+            </p>
+            <p><strong>Username:</strong>
+                <?php echo $username; ?>
+            </p>
+            <p><strong>Phone Number:</strong>
+                <?php echo $phone_no; ?>
+            </p>
 
-    .main-content {
-        width: 75%;
-    }
+        </div>
 
-    h1-acc {
-        color: #333;
-        margin-top: 0;
-    }
+        <div id="orders" style="display: none;">
+            <!-- Past orders content goes here -->
+            <h2>Past Purchases</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Invoice No</th>
+                        <th>Product Name</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                        <th>Total</th>
+                        <th>Order Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    $sql_orders = "SELECT * FROM tbl_order WHERE user_id = '$id'";
+                    $result_orders = mysqli_query($conn, $sql_orders);
+                    if ($result_orders && mysqli_num_rows($result_orders) > 0) {
+                        while ($row_order = mysqli_fetch_assoc($result_orders)) {
+                            echo "<tr>";
+                            echo "<td>" . $row_order['invoice_number'] . "</td>";
+                            echo "<td>" . $row_order['product_title'] . "</td>";
+                            echo "<td>" . $row_order['product_qty'] . "</td>";
+                            echo "<td>$" . $row_order['product_price'] . "</td>";
+                            echo "<td>$" . $row_order['product_total'] . "</td>";
+                            echo "<td>" . $row_order['order_date'] . "</td>";
+                            echo "</tr>";
+                        }
+                    } else {
+                        echo "<tr><td colspan='6'>No past purchases found.</td></tr>";
+                    }
+                    ?>
+                </tbody>
+            </table>
+        </div>
 
-    p-acc {
-        color: #555;
-    }
 
-    .sidebar ul {
-        list-style-type: none;
-        padding: 0;
-    }
+        <div id="password" style="display: none;">
+            <!-- Change password content goes here -->
+            <h2>Change Password</h2>
+            <form action="" method="post">
+                <label for="current_password">Current Password:</label>
+                <input type="password" id="current_password" name="current_password" required><br>
 
-    .sidebar ul li {
-        margin-bottom: 10px;
-    }
+                <label for="new_password">New Password:</label>
+                <input type="password" id="new_password" name="new_password" required><br>
 
-    .sidebar ul li a {
-        text-decoration: none;
-        color: #333;
-    }
+                <label for="confirm_password">Confirm New Password:</label>
+                <input type="password" id="confirm_password" name="confirm_password" required><br>
 
-    .sidebar ul li a:hover {
-        color: #4caf50;
-    }
-</style>
-
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        var pastOrdersLink = document.querySelector('a[href="#orders"]');
-        var mainContentHeading = document.querySelector('.main-content h1');
-
-        pastOrdersLink.addEventListener('click', function (event) {
-            event.preventDefault();
-            mainContentHeading.textContent = "Past Purchases";
-            // You can load past purchases dynamically here using AJAX if needed
-        });
-    });
-</script>
-
-</head>
-
-<body>
-    <div class="container-acc">
-        <div class="sidebar">
-            <h2>My Account</h2>
-            <ul>
-                <li><a href="#profile">My Profile</a></li>
-                <li><a href="#orders">Past Orders</a></li>
-                <li><a href="#password">Change Password</a></li>
-                <!-- Add more links as needed -->
-            </ul>
-
-            <!-- Logout button -->
-            <form action="" method="post" class="logout-form">
-                <input type="submit" name="logout" value="Logout">
+                <input type="submit" name="change_password" value="Change Password">
             </form>
         </div>
-        <div class="main-content">
-            <h1 class="h1-acc">Welcome to Your Account, <?php echo $first_name; ?>!</h1>
-            <!-- Display user information -->
-            <p><strong>First Name:</strong> <?php echo $first_name; ?></p>
-            <p><strong>Last Name:</strong> <?php echo $last_name; ?></p>
-            <p><strong>Username:</strong> <?php echo $username; ?></p>
-            <p><strong>Phone Number:</strong> <?php echo $phone_no; ?></p>
-            <!-- Add more user information as needed -->
+        <?php
+        if (isset($_POST['change_password'])) {
+            // Fetch the current user's data
+            $sql_user = "SELECT * FROM tbl_user WHERE id = '$id'";
+            $result_user = mysqli_query($conn, $sql_user);
+            // Change password process
+            if (isset($_POST['change_password'])) {
+                $current_password = $_POST['current_password'];
+                $new_password = $_POST['new_password'];
+                $confirm_password = $_POST['confirm_password'];
 
-            <!-- Display past purchases -->
-            <h2 id="orders">Past Orders</h2>
-            <ul>
-                <?php foreach($pastPurchases as $purchase): ?>
-                    <li><?php echo $purchase['product_name']; ?> - <?php echo $purchase['purchase_date']; ?></li>
-                <?php endforeach; ?>
-            </ul>
-        </div>
+                // Fetch the current user's data
+                $sql_user = "SELECT * FROM tbl_user WHERE id = '$id'";
+                $result_user = mysqli_query($conn, $sql_user);
+                if ($result_user && mysqli_num_rows($result_user) > 0) {
+                    $user = mysqli_fetch_assoc($result_user);
+
+                    // Verify if current password matches the one in the database (MD5 hashed)
+                    if (md5($current_password) === $user['password']) {
+                        // Verify if the new password and confirm password match
+                        if ($new_password === $confirm_password) {
+                            // Hash the new password using MD5
+                            $hashed_password = md5($new_password);
+
+                            // Update the password in the database
+                            $update_sql = "UPDATE tbl_user SET password = '$hashed_password' WHERE id = '$id'";
+                            $update_result = mysqli_query($conn, $update_sql);
+                            if ($update_result) {
+                                echo "Password changed successfully.";
+                            } else {
+                                echo "Failed to update password. Please try again.";
+                            }
+                        } else {
+                            echo "New password and confirm password do not match.";
+                        }
+                    } else {
+                        echo "Current password is incorrect. Please try again.";
+                    }
+                } else {
+                    echo "Failed to fetch user data. Please try again.";
+                }
+            }
+        }
+        ?>
     </div>
-    <!-- Include your footer here -->
-    <?php include('partials-front/footer.php'); ?>
-</body>
-</html>
+</div>
+<!-- Include your footer here -->
+<?php include('partials-front/footer.php'); ?>
+
+<script>
+    function showSection(sectionId) {
+        // Hide all sections
+        document.querySelectorAll('.main-content > div').forEach(function (section) {
+            section.style.display = 'none';
+        });
+
+        // Show the selected section
+        document.getElementById(sectionId).style.display = 'block';
+    }
+</script>

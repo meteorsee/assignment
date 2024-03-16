@@ -1142,48 +1142,14 @@ textarea {
 }
 
 /* CSS for User Account */
-.container-acc {
-  display: flex;
-  justify-content: space-between;
-  max-width: 1200px;
-  margin: 50px auto;
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+.main-content {
+  width: 70%; /* Adjust the width as needed */
+  float: left; /* Ensure the main content floats to the left */
+  margin-left: 20px; /* Add some margin to create space between sidebar and main content */
 }
 
 .sidebar {
-  width: 20%;
-}
-
-.main-content-acc {
-  width: 75%;
-}
-
-.h1-acc {
-  color: #333;
-  margin-top: 0;
-}
-
-.p-acc {
-  color: #555;
-}
-
-.sidebar ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-.sidebar ul li {
-  margin-bottom: 10px;
-}
-
-.sidebar ul li a {
-  text-decoration: none;
-  color: #333;
-}
-
-.sidebar ul li a:hover {
-  color: #4caf50;
+  width: 30%; /* Adjust the width of the sidebar */
+  float: left; /* Float the sidebar to the left */
+  padding: 20px; /* Add some padding to create space between sidebar and main content */
 }
