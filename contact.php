@@ -1,5 +1,3 @@
-<?php ob_start(); ?>
-
 <?php include("partials-front/navbar.php"); ?>
 
 <!-- Start Hero Section -->
@@ -22,9 +20,13 @@
 
 <!-- Start Contact Form -->
 <?php
-if (isset($_SESSION['contact'])) {
-  echo $_SESSION['contact'];
-  unset($_SESSION['contact']);
+if (isset($_SESSION['contact-success'])) {
+  echo $_SESSION['contact-success'];
+  unset($_SESSION['contact-success']);
+}
+if (isset($_SESSION['contact-failed'])) {
+  echo $_SESSION['contact-failed'];
+  unset($_SESSION['contact-failed']);
 }
 ?>
 
@@ -151,19 +153,26 @@ if (isset($_SESSION['contact'])) {
                 if ($res2 == true) {
                   // Display success message
                   // Redirect to Manage Admin Page with success message
-                  $_SESSION['contact'] = "<div class='success text-center'>Contact Message Sent Successfully.</div>";
-                  header('location:' . SITEURL . '/contact.php');
+                  $_SESSION['contact-success'] = "<div class='success text-center'>Contact Message Sent Successfully.</div>";
+                  //header('location:'.SITEURL. 'contact.php');
+                  echo "<script type='text/javascript'>window.location.href = 'contact.php';</script>";
+
                 } else {
                   // Display error message
                   // Redirect to Manage Admin Page with error message
-                  $_SESSION['contact'] = "<div class='error text-center'>Failed to snd Contact Message.</div>";
-                  header('location:' . SITEURL . '/contact.php');
+                  $_SESSION['contact-failed'] = "<div class='error text-center'>Failed to send Contact Message.</div>";
+                  //header('location: '.SITEURL.'contact.php');
+                  echo "<script type='text/javascript'>window.location.href = 'contact.php';</script>";
+
                 }
-              } else {
+              }
+               else {
                 // Display error message
                   // Redirect to Manage Admin Page with error message
-                  $_SESSION['contact'] = "<div class='error text-center'>Failed to snd Contact Message.</div>";
-                  header('location:' . SITEURL . '/contact.php');
+                  //$_SESSION['contact'] = "<div class='error text-center'>Failed to send Contact Message.</div>";
+                  //header('location: contact.php');
+                  //echo "<script type='text/javascript'>window.location.href = 'user-login.php';</script>";
+
               }
               ?>
 
@@ -184,4 +193,3 @@ if (isset($_SESSION['contact'])) {
 
     
 <?php include("partials-front/footer.php"); ?>
-<?php ob_end_flush(); ?>
