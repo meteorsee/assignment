@@ -17,9 +17,9 @@
 			</div>
 		<!-- End Hero Section -->
 <?php
-if (isset($_SESSION ['invoiceNumber'])) {
-	echo $_SESSION['invoiceNumber'];
-	//unset($_SESSION['invoiceNumber']);
+if (isset($_SESSION ['invoice'])) {
+	unset($_SESSION['invoice']);
+	//echo $_SESSION['invoice'];
 }
 ?>
 

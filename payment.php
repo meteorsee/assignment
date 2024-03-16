@@ -120,16 +120,16 @@ if (isset($_SESSION['upload'])) {
                             <form method="POST" id="bankTransferForm" enctype="multipart/form-data" onsubmit="return validateBankNumber()">
                                 <div class="mb-3">
                                     <label for="bankName" class="form-label">Bank Name</label>
-                                    <input type="text" class="form-control" id="bankName" name="bankName">
+                                    <input type="text" class="form-control" id="bankName" name="bankName" required>
                                 </div>
                                 <div class="mb-3">
                                     <label for="bank_account_number" class="form-label">Bank Account Number</label>
                                     <input type="text" class="form-control" id="bank_account_number"
-                                        name="bank_account_number">
+                                        name="bank_account_number" required>
                                 </div>
                                 <div class="mb-3">
                                     <label for="image" class="form-label">Upload Image</label>
-                                    <input type="file" class="form-control" id="image" name="image">
+                                    <input type="file" class="form-control" id="image" name="image" required>
                                 </div>
                                 <input type="hidden" name="user_id" value="<?php echo $userId; ?>">
                                 <input type="hidden" name="invoice_number" value="<?php echo $invoiceNumber; ?>">
@@ -224,10 +224,14 @@ if (isset($_POST["submit_payment"])) {
     $res4 = mysqli_query($conn, $sql4);
     if ($res4 == true) {
         //Payment Successful
-        // if (isset($_SESSION ['invoice'])) {
-        //     echo $_SESSION['invoice'];
-        //     //unset($_SESSION['invoice']);
+        // if (isset($_SESSION ['invoice_number'])) {
+        //     $_SESSION['invoice'] = "Invoice Number: " . $invoiceNumber;
         // }
+
+        // After inserting all products, clear the cart (optional)
+        $sql_clear_cart = "DELETE FROM tbl_cart WHERE user_id = '$userId'";
+        mysqli_query($conn, $sql_clear_cart);
+
         echo "<script type='text/javascript'>window.location.href = 'thankyou.php';</script>";
     } else {
         //Payment Failed

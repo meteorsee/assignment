@@ -54,16 +54,15 @@ if (isset($_SESSION['user'])) {
     echo "<script type='text/javascript'>window.location.href = 'user-login.php';</script>";
     exit(); // Stop further execution
 }
-?>
-<?php
-    if (isset($_SESSION['order-success'])) {
-        echo $_SESSION['order-success'];
-        unset($_SESSION['order-success']);
-    }
-if (isset($_SESSION['order-failed'])) {
-    echo $_SESSION['order-failed'];
-    unset($_SESSION['order-failed']);
-}
+
+//     if (isset($_SESSION['order-success'])) {
+//         echo $_SESSION['order-success'];
+//         unset($_SESSION['order-success']);
+//     }
+// if (isset($_SESSION['order-failed'])) {
+//     echo $_SESSION['order-failed'];
+//     unset($_SESSION['order-failed']);
+// }
 ?>
 <div class="untree_co-section">
     <div class="container">
@@ -80,13 +79,13 @@ if (isset($_SESSION['order-failed'])) {
                                 <label for="c_fname" class="text-black">First Name <span
                                         class="text-danger">*</span></label>
                                 <input type="text" class="form-control" id="c_fname" name="c_fname"
-                                    value="<?php echo $first_name; ?>">
+                                    value="<?php echo $first_name; ?>" required>
                             </div>
                             <div class="col-md-6">
                                 <label for="c_lname" class="text-black">Last Name <span
                                         class="text-danger">*</span></label>
                                 <input type="text" class="form-control" id="c_lname" name="c_lname"
-                                    value="<?php echo $last_name; ?>">
+                                    value="<?php echo $last_name; ?>" required>
                             </div>
                         </div>
 
@@ -95,19 +94,19 @@ if (isset($_SESSION['order-failed'])) {
                                 <label for="c_address" class="text-black">Address <span
                                         class="text-danger">*</span></label>
                                 <input type="text" class="form-control" id="c_address" name="c_address"
-                                    placeholder="Street address">
+                                    placeholder="Street address" required>
                             </div>
                         </div>
                         <div class="form-group row">
                             <div class="col-md-6">
                                 <label for="c_state_country" class="text-black">State <span
                                         class="text-danger">*</span></label>
-                                <input type="text" class="form-control" id="c_state_country" name="c_state">
+                                <input type="text" class="form-control" id="c_state_country" name="c_state" required>
                             </div>
                             <div class="col-md-6">
                                 <label for="c_postal_zip" class="text-black">Postal / Zip <span
                                         class="text-danger">*</span></label>
-                                <input type="text" class="form-control" id="c_postal_zip" name="c_postal_zip">
+                                <input type="text" class="form-control" id="c_postal_zip" name="c_postal_zip" required>
                             </div>
                         </div>
 
@@ -116,12 +115,12 @@ if (isset($_SESSION['order-failed'])) {
                                 <label for="c_email_address" class="text-black">Email Address <span
                                         class="text-danger">*</span></label>
                                 <input type="text" class="form-control" id="c_email_address" name="c_email"
-                                    value="<?php echo $email; ?>">
+                                    value="<?php echo $email; ?>" required>
                             </div>
                             <div class="col-md-6">
                                 <label for="c_phone" class="text-black">Phone <span class="text-danger">*</span></label>
                                 <input type="text" class="form-control" id="c_phone" name="c_phone"
-                                    placeholder="Phone Number" value="<?php echo $phone_no; ?>">
+                                    placeholder="Phone Number" value="<?php echo $phone_no; ?>" required>
                             </div>
                         </div>
 
@@ -267,11 +266,11 @@ if (isset($_POST["submit"])) {
             }
         }
 
-        // After inserting all products, clear the cart (optional)
-        //$sql_clear_cart = "DELETE FROM tbl_cart WHERE user_id = '$user_id'";
-        //mysqli_query($conn, $sql_clear_cart);
+        // // After inserting all products, clear the cart (optional)
+        // $sql_clear_cart = "DELETE FROM tbl_cart WHERE user_id = '$user_id'";
+        // mysqli_query($conn, $sql_clear_cart);
 
-        $_SESSION['order-success'] =  "<div class='success'>Order Placed Successfully.</div>";
+        //$_SESSION['order-success'] =  "<div class='success'>Order Placed Successfully.</div>";
         $_SESSION ['invoice'] = $invoiceNumber;
         echo "<script type='text/javascript'>window.location.href = 'payment.php';</script>";
         exit(); // Stop further execution
