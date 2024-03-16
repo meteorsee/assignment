@@ -1,0 +1,71 @@
+/* CSS for User Account */
+/* CSS for User Account */
+.container-acc {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1400px; /* Adjusted max-width */
+    margin: 50px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar-acc {
+    width: 20%;
+}
+
+.main-content-acc {
+    width: 75%;
+}
+
+h1-acc {
+    color: #333;
+    margin-top: 0;
+}
+
+p-acc {
+    color: #555;
+}
+
+.sidebar-acc ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar-acc ul li {
+    margin-bottom: 10px;
+}
+
+.sidebar-acc ul li a {
+    text-decoration: none;
+    color: #333;
+}
+
+.sidebar-acc ul li a:hover {
+    color: #4caf50;
+}
+
+/* Adjusted alignment for password input fields */
+#password form label,
+#password form input[type="password"] {
+    display: block;
+    margin-bottom: 10px;
+}
+
+/* Prevent squeezing of past orders table */
+#orders table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#orders th,
+#orders td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+#orders th {
+    background-color: #f2f2f2;
+}

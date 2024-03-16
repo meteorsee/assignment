@@ -39,9 +39,11 @@ if (isset($_POST['logout'])) {
     exit(); // Stop further execution
 }
 ?>
+<link rel="stylesheet" type="text/css" href="css/user-account.css">
+
 
 <div class="container-acc">
-    <div class="sidebar">
+    <div class="sidebar-acc">
         <h2>My Account</h2>
         <ul>
             <li><a href="#" onclick="showSection('profile')">My Profile</a></li>
@@ -55,7 +57,7 @@ if (isset($_POST['logout'])) {
             <input type="submit" name="logout" value="Logout">
         </form>
     </div>
-    <div class="main-content">
+    <div class="main-content-acc">
         <div id="profile" style="display: none;">
             <!-- Profile content goes here -->
             <h1>Welcome to Your Profile,
@@ -77,103 +79,104 @@ if (isset($_POST['logout'])) {
         </div>
 
         <div id="orders" style="display: none;">
-            <!-- Past orders content goes here -->
-            <h2>Past Purchases</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Invoice No</th>
-                        <th>Product Name</th>
-                        <th>Quantity</th>
-                        <th>Price</th>
-                        <th>Total</th>
-                        <th>Order Date</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                    $sql_orders = "SELECT * FROM tbl_order WHERE user_id = '$id'";
-                    $result_orders = mysqli_query($conn, $sql_orders);
-                    if ($result_orders && mysqli_num_rows($result_orders) > 0) {
-                        while ($row_order = mysqli_fetch_assoc($result_orders)) {
-                            echo "<tr>";
-                            echo "<td>" . $row_order['invoice_number'] . "</td>";
-                            echo "<td>" . $row_order['product_title'] . "</td>";
-                            echo "<td>" . $row_order['product_qty'] . "</td>";
-                            echo "<td>$" . $row_order['product_price'] . "</td>";
-                            echo "<td>$" . $row_order['product_total'] . "</td>";
-                            echo "<td>" . $row_order['order_date'] . "</td>";
-                            echo "</tr>";
-                        }
-                    } else {
-                        echo "<tr><td colspan='6'>No past purchases found.</td></tr>";
-                    }
-                    ?>
-                </tbody>
-            </table>
-        </div>
-
-
-        <div id="password" style="display: none;">
-            <!-- Change password content goes here -->
-            <h2>Change Password</h2>
-            <form action="" method="post">
-                <label for="current_password">Current Password:</label>
-                <input type="password" id="current_password" name="current_password" required><br>
-
-                <label for="new_password">New Password:</label>
-                <input type="password" id="new_password" name="new_password" required><br>
-
-                <label for="confirm_password">Confirm New Password:</label>
-                <input type="password" id="confirm_password" name="confirm_password" required><br>
-
-                <input type="submit" name="change_password" value="Change Password">
-            </form>
-        </div>
-        <?php
-        if (isset($_POST['change_password'])) {
-            // Fetch the current user's data
-            $sql_user = "SELECT * FROM tbl_user WHERE id = '$id'";
-            $result_user = mysqli_query($conn, $sql_user);
-            // Change password process
-            if (isset($_POST['change_password'])) {
-                $current_password = $_POST['current_password'];
-                $new_password = $_POST['new_password'];
-                $confirm_password = $_POST['confirm_password'];
-
-                // Fetch the current user's data
-                $sql_user = "SELECT * FROM tbl_user WHERE id = '$id'";
-                $result_user = mysqli_query($conn, $sql_user);
-                if ($result_user && mysqli_num_rows($result_user) > 0) {
-                    $user = mysqli_fetch_assoc($result_user);
-
-                    // Verify if current password matches the one in the database (MD5 hashed)
-                    if (md5($current_password) === $user['password']) {
-                        // Verify if the new password and confirm password match
-                        if ($new_password === $confirm_password) {
-                            // Hash the new password using MD5
-                            $hashed_password = md5($new_password);
-
-                            // Update the password in the database
-                            $update_sql = "UPDATE tbl_user SET password = '$hashed_password' WHERE id = '$id'";
-                            $update_result = mysqli_query($conn, $update_sql);
-                            if ($update_result) {
-                                echo "Password changed successfully.";
-                            } else {
-                                echo "Failed to update password. Please try again.";
-                            }
-                        } else {
-                            echo "New password and confirm password do not match.";
-                        }
-                    } else {
-                        echo "Current password is incorrect. Please try again.";
-                    }
-                } else {
-                    echo "Failed to fetch user data. Please try again.";
+    <!-- Past orders content goes here -->
+    <h2>Past Purchases</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Invoice No</th>
+                <th>Product Name</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Total</th>
+                <th>Order Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            $sql_orders = "SELECT * FROM tbl_order WHERE user_id = '$id'";
+            $result_orders = mysqli_query($conn, $sql_orders);
+            if ($result_orders && mysqli_num_rows($result_orders) > 0) {
+                while ($row_order = mysqli_fetch_assoc($result_orders)) {
+                    echo "<tr>";
+                    echo "<td>" . $row_order['invoice_number'] . "</td>";
+                    echo "<td>" . $row_order['product_title'] . "</td>";
+                    echo "<td>" . $row_order['product_qty'] . "</td>";
+                    echo "<td>$" . $row_order['product_price'] . "</td>";
+                    echo "<td>$" . $row_order['product_total'] . "</td>";
+                    echo "<td>" . $row_order['order_date'] . "</td>";
+                    echo "</tr>";
                 }
+            } else {
+                echo "<tr><td colspan='6'>No past purchases found.</td></tr>";
             }
+            ?>
+        </tbody>
+    </table>
+</div>
+
+
+<div id="password" style="display: none;">
+    <!-- Change password content goes here -->
+    <h2>Change Password</h2>
+    <form action="" method="post">
+        <label for="current_password">Current Password:</label>
+        <input type="password" id="current_password" name="current_password" required><br>
+
+        <label for="new_password">New Password:</label>
+        <input type="password" id="new_password" name="new_password" required><br>
+
+        <label for="confirm_password">Confirm New Password:</label>
+        <input type="password" id="confirm_password" name="confirm_password" required><br>
+
+        <input type="submit" name="change_password" value="Change Password">
+    </form>
+</div>
+<?php
+if(isset($_POST['change_password'])) {
+    // Fetch the current user's data
+    $sql_user = "SELECT * FROM tbl_user WHERE id = '$id'";
+    $result_user = mysqli_query($conn, $sql_user);
+    // Change password process
+if (isset($_POST['change_password'])) {
+    $current_password = $_POST['current_password'];
+    $new_password = $_POST['new_password'];
+    $confirm_password = $_POST['confirm_password'];
+
+    // Fetch the current user's data
+    $sql_user = "SELECT * FROM tbl_user WHERE id = '$id'";
+    $result_user = mysqli_query($conn, $sql_user);
+    if ($result_user && mysqli_num_rows($result_user) > 0) {
+        $user = mysqli_fetch_assoc($result_user);
+
+        // Verify if current password matches the one in the database (MD5 hashed)
+        if (md5($current_password) === $user['password']) {
+            // Verify if the new password and confirm password match
+            if ($new_password === $confirm_password) {
+                // Hash the new password using MD5
+                $hashed_password = md5($new_password);
+
+                // Update the password in the database
+                $update_sql = "UPDATE tbl_user SET password = '$hashed_password' WHERE id = '$id'";
+                $update_result = mysqli_query($conn, $update_sql);
+                if ($update_result) {
+                    echo "Password changed successfully.";
+                } else {
+                    echo "Failed to update password. Please try again.";
+                }
+            } else {
+                echo "New password and confirm password do not match.";
+            }
+        } else {
+            echo "Current password is incorrect. Please try again.";
         }
-        ?>
+    } else {
+        echo "Failed to fetch user data. Please try again.";
+    }
+}
+}
+?>
+
     </div>
 </div>
 <!-- Include your footer here -->
@@ -182,7 +185,7 @@ if (isset($_POST['logout'])) {
 <script>
     function showSection(sectionId) {
         // Hide all sections
-        document.querySelectorAll('.main-content > div').forEach(function (section) {
+        document.querySelectorAll('.main-content-acc > div').forEach(function (section) {
             section.style.display = 'none';
         });
 

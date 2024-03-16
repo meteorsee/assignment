@@ -1140,16 +1140,3 @@ textarea {
   font-size: 1rem;
   color: #747d8c;
 }
-
-/* CSS for User Account */
-.main-content {
-  width: 70%; /* Adjust the width as needed */
-  float: left; /* Ensure the main content floats to the left */
-  margin-left: 20px; /* Add some margin to create space between sidebar and main content */
-}
-
-.sidebar {
-  width: 30%; /* Adjust the width of the sidebar */
-  float: left; /* Float the sidebar to the left */
-  padding: 20px; /* Add some padding to create space between sidebar and main content */
-}
