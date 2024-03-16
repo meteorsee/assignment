@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 14, 2024 at 02:39 PM
+-- Generation Time: Mar 16, 2024 at 04:36 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -68,11 +68,7 @@ CREATE TABLE `tbl_cart` (
 --
 
 INSERT INTO `tbl_cart` (`id`, `user_id`, `product_id`, `title`, `price`, `image_name`, `category_id`, `created_at`, `qty`, `total`) VALUES
-(21, 3, 19, 'Casetify Gravity 3.0', 100, '', 19, '2024-03-10 16:55:07', 11, 1100),
-(22, 3, 21, 'Casetify PP-0008', 88, '', 19, '2024-03-10 17:54:05', 4, 352),
-(25, 6, 20, 'Casetify Travel Lover by Nawara Studio', 99, '', 19, '2024-03-11 03:32:17', 1, 99),
-(29, 3, 22, 'Casetify Dont Be Afraid', 77, '', 19, '2024-03-14 11:05:13', 3, 231),
-(30, 3, 23, 'Casetify White', 50, '', 19, '2024-03-14 11:06:14', 3, 150);
+(25, 6, 20, 'Casetify Travel Lover by Nawara Studio', 99, '', 19, '2024-03-11 03:32:17', 1, 99);
 
 -- --------------------------------------------------------
 
@@ -132,26 +128,62 @@ INSERT INTO `tbl_contact` (`id`, `first_name`, `last_name`, `phone_no`, `message
 
 CREATE TABLE `tbl_order` (
   `id` int(10) UNSIGNED NOT NULL,
+  `invoice_number` varchar(255) NOT NULL,
   `product_id` int(10) UNSIGNED NOT NULL,
-  `product` varchar(150) NOT NULL,
-  `price` decimal(10,2) NOT NULL,
-  `qty` int(11) NOT NULL,
-  `total` decimal(10,2) NOT NULL,
+  `product_title` varchar(150) NOT NULL,
+  `product_price` decimal(10,2) NOT NULL,
+  `product_qty` int(11) NOT NULL,
+  `product_total` decimal(10,2) NOT NULL,
   `order_date` datetime NOT NULL,
   `status` varchar(50) NOT NULL,
   `first_name` varchar(150) NOT NULL,
   `last_name` varchar(255) NOT NULL,
   `address` varchar(255) NOT NULL,
   `state` varchar(255) NOT NULL,
-  `zipcode` int(5) NOT NULL,
+  `postal` int(5) NOT NULL,
   `email` varchar(255) NOT NULL,
-  `phone` varchar(255) NOT NULL,
+  `phone_no` varchar(255) NOT NULL,
   `order_notes` varchar(255) NOT NULL,
-  `coupon` varchar(255) NOT NULL,
-  `bank_no` int(20) NOT NULL,
-  `bank_image_name` varchar(255) NOT NULL,
-  `account_id` int(10) UNSIGNED NOT NULL
+  `user_id` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_order`
+--
+
+INSERT INTO `tbl_order` (`id`, `invoice_number`, `product_id`, `product_title`, `product_price`, `product_qty`, `product_total`, `order_date`, `status`, `first_name`, `last_name`, `address`, `state`, `postal`, `email`, `phone_no`, `order_notes`, `user_id`) VALUES
+(99, 'INV1710599709', 18, 'Casetify Black Kingsnake', 60.00, 1, 60.00, '2024-03-16 03:35:09', 'Done Payment', 'Keng Lek', 'See', '91, JLN PARIT HAJI BAKI,84000, MUAR, JOHOR', 'Johor', 84000, 'meteorsee1108@1utar.my', '+60193309187', 'test', 3),
+(100, 'INV1710599709', 20, 'Casetify Travel Lover', 99.00, 1, 99.00, '2024-03-16 03:35:09', 'Done Payment', 'Keng Lek', 'See', '91, JLN PARIT HAJI BAKI,84000, MUAR, JOHOR', 'Johor', 84000, 'meteorsee1108@1utar.my', '+60193309187', 'test', 3);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_payment`
+--
+
+CREATE TABLE `tbl_payment` (
+  `id` int(11) UNSIGNED NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `invoice_number` varchar(255) NOT NULL,
+  `bank_name` varchar(255) NOT NULL,
+  `bank_account_number` int(255) NOT NULL,
+  `image_name` varchar(255) NOT NULL,
+  `payment_date` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_payment`
+--
+
+INSERT INTO `tbl_payment` (`id`, `user_id`, `invoice_number`, `bank_name`, `bank_account_number`, `image_name`, `payment_date`) VALUES
+(24, 3, 'INV1710597493', 'Public Bank', 21321, 'INV1710597493.png', 2147483647),
+(25, 3, 'INV1710597599', 'Public Bank', 456, '', 2147483647),
+(26, 3, 'INV1710597658', 'Public Bank', 16514, 'INV1710597658.jpg', 2147483647),
+(27, 3, 'INV1710597755', 'Public Bank', 16514, 'INV1710597755.png', 2147483647),
+(28, 3, 'INV1710597904', 'Public Bank', 16514, 'INV1710597904.png', 2147483647),
+(29, 3, 'INV1710597978', 'Public Bank', 16514, 'INV1710597978.png', 2147483647),
+(30, 3, 'INV1710598249', 'Public Bank', 16514, 'INV1710598249.jpg', 2147483647),
+(31, 3, 'INV1710599709', 'Public Bank', 16514, 'INV1710599709.jpg', 2147483647);
 
 -- --------------------------------------------------------
 
@@ -226,7 +258,7 @@ CREATE TABLE `tbl_user` (
 --
 
 INSERT INTO `tbl_user` (`id`, `first_name`, `last_name`, `username`, `phone_no`, `email`, `password`) VALUES
-(3, 'Meteor', 'See', 'MS', '+60193309187', 'meteorsee@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055'),
+(3, 'Meteor', 'See', 'MS', '+60193309187', 'meteorsee@gmail.com', '202cb962ac59075b964b07152d234b70'),
 (5, 'Vivian', 'Na', 'VV', '1234', '', '202cb962ac59075b964b07152d234b70'),
 (6, 'Kim Hau', 'Yau', 'KH', '12345', '', '202cb962ac59075b964b07152d234b70'),
 (7, 'Jie Qing', 'Chai', 'JQ', '123', '', '202cb962ac59075b964b07152d234b70'),
@@ -267,8 +299,14 @@ ALTER TABLE `tbl_contact`
 --
 ALTER TABLE `tbl_order`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `account_id` (`account_id`),
+  ADD KEY `account_id` (`user_id`),
   ADD KEY `product_id` (`product_id`);
+
+--
+-- Indexes for table `tbl_payment`
+--
+ALTER TABLE `tbl_payment`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `tbl_product`
@@ -296,7 +334,7 @@ ALTER TABLE `tbl_admin`
 -- AUTO_INCREMENT for table `tbl_cart`
 --
 ALTER TABLE `tbl_cart`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 
 --
 -- AUTO_INCREMENT for table `tbl_category`
@@ -308,13 +346,19 @@ ALTER TABLE `tbl_category`
 -- AUTO_INCREMENT for table `tbl_contact`
 --
 ALTER TABLE `tbl_contact`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `tbl_order`
 --
 ALTER TABLE `tbl_order`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
+
+--
+-- AUTO_INCREMENT for table `tbl_payment`
+--
+ALTER TABLE `tbl_payment`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `tbl_product`
@@ -338,13 +382,6 @@ ALTER TABLE `tbl_user`
 ALTER TABLE `tbl_cart`
   ADD CONSTRAINT `tbl_cart_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `tbl_user` (`id`),
   ADD CONSTRAINT `tbl_cart_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `tbl_product` (`id`);
-
---
--- Constraints for table `tbl_order`
---
-ALTER TABLE `tbl_order`
-  ADD CONSTRAINT `tbl_order_ibfk_1` FOREIGN KEY (`account_id`) REFERENCES `tbl_user` (`id`),
-  ADD CONSTRAINT `tbl_order_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `tbl_product` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
