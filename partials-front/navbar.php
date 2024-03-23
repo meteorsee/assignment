@@ -6,7 +6,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<meta name="author" content="Untree.co">
+	<meta name="author" content="MS">
 	<link rel="shortcut icon" href="favicon.png">
 
 	<meta name="description" content="" />
@@ -29,7 +29,9 @@
 	<nav class="custom-navbar navbar navbar navbar-expand-md navbar-dark bg-dark" arial-label="Furni navigation bar">
 
 		<div class="container">
-			<a class="navbar-brand" href="index.php">Furni<span>.</span></a>
+			<a class="navbar-brand" href="index.php">
+				<img src="logo.png" alt="Logo" style="width: 65px; height: 65px;">
+			</a>
 
 			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsFurni"
 				aria-controls="navbarsFurni" aria-expanded="false" aria-label="Toggle navigation">

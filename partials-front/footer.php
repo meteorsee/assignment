@@ -17,7 +17,7 @@
 
 				<div class="row g-5 mb-5">
 					<div class="col-lg-4">
-						<div class="mb-4 footer-logo-wrap"><a href="#" class="footer-logo">Gadget Galaxy</a></div>
+						<div class="mb-4 footer-logo-wrap"><a href="index.php" class="footer-logo">Gadget Galaxy</a></div>
 						<p class="mb-4">Discover premium phone accessories designed to elevate your device experience at Gadget Galaxy. Explore our wide range of products crafted with precision and style.</p>
 
 						<ul class="list-unstyled custom-social">
