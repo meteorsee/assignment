@@ -30,7 +30,7 @@
 
 		<div class="container">
 			<a class="navbar-brand" href="index.php">
-				<img src="logo.png" alt="Logo" style="width: 65px; height: 65px;">
+				<img src="logo.png" alt="Logo" style="width: 65px; height: 65px;">Gadget Galaxy<span>.</span>
 			</a>
 
 			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsFurni"
