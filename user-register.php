@@ -11,7 +11,14 @@
     <h1 class="text-center">Register</h1>
     <br><br>
 
-    
+    <?php 
+                
+
+                if(isset($_SESSION['register'])){
+                    echo $_SESSION['register'];
+                    unset($_SESSION['register']);
+                }
+            ?>
 
     <br><br>
     <!--START Registration Form-->
@@ -75,11 +82,11 @@ if(isset($_POST['submit'])){
         if($res){
             // Registration successful
             $_SESSION['register'] = "<div class='success'>Registration Successful.</div>";
-            header('location:'.SITEURL.'user/user-login.php');
+            header('location:'.SITEURL.'user-login.php');
         }else{
             // Registration failed
             $_SESSION['register'] = "<div class='error text-center'>Registration failed. Please try again.</div>";
-            header('location:'.SITEURL.'user/user-register.php');
+            header('location:'.SITEURL.'user-register.php');
         }
     }
 }

@@ -145,7 +145,7 @@
 
                         <div class="row">
                             <div class="col-md-12">
-                                <button class="btn btn-black btn-lg py-3 btn-block" onclick="window.location='checkout.php'">Proceed To Checkout</button>
+                                <button id="checkoutBtn" class="btn btn-black btn-lg py-3 btn-block">Proceed To Checkout</button>
                             </div>
                         </div>
                     </div>
@@ -228,6 +228,20 @@
                 $(".total").text(0); // Set the total to 0 if the subtotal is not a number
             }
         }
+
+
+        // Handle checkout button click
+        $("#checkoutBtn").click(function(event) {
+            var subtotal = parseFloat($(".subtotal").text());
+            if (subtotal <= 0) {
+                alert("Your cart is empty. Please add items to your cart first.");
+                event.preventDefault(); // Prevent the default action of the button click
+            } else {
+                window.location = "checkout.php"; // Redirect to the checkout page
+            }
+        });
     });
+
+    
 </script>
 

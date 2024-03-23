@@ -17,10 +17,7 @@
                     unset($_SESSION['login']);
                 }
 
-                if(isset($_SESSION['register'])){
-                    echo $_SESSION['register'];
-                    unset($_SESSION['register']);
-                }
+                
             ?>
 
             <br><br>

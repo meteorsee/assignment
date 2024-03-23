@@ -17,6 +17,8 @@
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 	<link href="css/tiny-slider.css" rel="stylesheet">
 	<link href="css/style.css" rel="stylesheet">
+	<link href="css/shop.css" rel="stylesheet">
+
 	<title>Gadget Galaxy</title>
 </head>
 
@@ -39,10 +41,10 @@
 						echo 'active'; ?>">
 						<a class="nav-link" href="index.php">Home</a>
 					</li>
-					<li class="nav-item <?php if (basename($_SERVER['PHP_SELF']) == 'category.php')
+					<!-- <li class="nav-item <?php if (basename($_SERVER['PHP_SELF']) == 'category.php')
 						echo 'active'; ?>">
 						<a class="nav-link" href="category.php">Category</a>
-					</li>
+					</li> -->
 					<li
 						class="nav-item <?php if (basename($_SERVER['PHP_SELF']) == 'product-search.php' || basename($_SERVER['PHP_SELF']) == 'shop.php')
 							echo 'active'; ?>">
