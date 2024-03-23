@@ -1,4 +1,3 @@
-
 <?php
 // Include database connection code
 include('config/constants.php');
@@ -38,8 +37,9 @@ if(isset($_SESSION['user'])) {
 
                 if ($updateCartItemResult) {
                     // Quantity updated successfully
-                    //echo "Quantity updated successfully.";
-                    header('location:'. 'shop.php');
+                    // Redirect back to shop.php with a success message
+                    header('location: shop.php?added=true');
+                    exit();
                 } else {
                     // Failed to update quantity
                     echo "Failed to update quantity. Please try again.";
@@ -69,8 +69,9 @@ if(isset($_SESSION['user'])) {
 
                     if ($insertCartItemResult) {
                         // Item added to cart successfully
-                        //echo "Item added to cart successfully.";
-                        header('location:'. 'shop.php');
+                        // Redirect back to shop.php with a success message
+                        header('location: shop.php?added=true');
+                        exit();
                     } else {
                         // Failed to add item to cart
                         echo "Failed to add item to cart. Please try again.";

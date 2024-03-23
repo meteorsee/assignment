@@ -22,6 +22,12 @@
     </div>
 </div>
 <!-- End Hero Section -->
+<?php
+// Check if the 'added' query parameter is set to true
+if(isset($_GET['added']) && $_GET['added'] == 'true') {
+    echo "<script>alert('Item added to cart successfully!');</script>";
+}
+?>
 
 <div class="untree_co-section product-section before-footer-section">
     <div class="container">
