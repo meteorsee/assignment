@@ -8,7 +8,7 @@
 							<div class="intro-excerpt">
 								<h1>Welcome to Our Blog</h1>
 								<p class="mb-4">Explore insightful articles and helpful tips on home furnishing, decoration, and lifestyle.</p>
-								<p><a href="category.php" class="btn btn-secondary me-2">Shop Now</a><a href="shop.php" class="btn btn-white-outline">Explore</a></p>
+								<p><a href="shop.php" class="btn btn-secondary me-2">Shop Now</a><a href="shop.php" class="btn btn-white-outline">Explore</a></p>
 							</div>
 						</div>
 					</div>

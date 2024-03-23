@@ -8,7 +8,7 @@
 							<div class="intro-excerpt">
 								<h1>Learn about Gadget Galaxy</h1>
 								<p class="mb-4">Discover premium phone accessories designed to elevate your device experience at Gadget Galaxy. Explore our wide range of products crafted with precision and style.</p>
-								<p><a href="category.php" class="btn btn-secondary me-2">Shop Now</a><a href="shop.php" class="btn btn-white-outline">Explore</a></p>
+								<p><a href="shop.php" class="btn btn-secondary me-2">Shop Now</a><a href="shop.php" class="btn btn-white-outline">Explore</a></p>
 							</div>
 						</div>
 					</div>

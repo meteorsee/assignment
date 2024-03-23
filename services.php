@@ -8,7 +8,7 @@
 							<div class="intro-excerpt">
 								<h1>Explore Our Wide Range of Services</h1>
 								<p class="mb-4">Explore our range of services designed to enhance your experience. From fast shipping to hassle-free returns, we've got you covered.</p>
-								<p><a href="category.php" class="btn btn-secondary me-2">Shop Now</a><a href="shop.php" class="btn btn-white-outline">Explore</a></p>
+								<p><a href="shop.php" class="btn btn-secondary me-2">Shop Now</a><a href="shop.php" class="btn btn-white-outline">Explore</a></p>
 							</div>
 						</div>
 					</div>
@@ -81,7 +81,7 @@
 					<div class="col-md-12 col-lg-3 mb-5 mb-lg-0">
 						<h2 class="mb-4 section-title">Crafted with Precision for Your Devices</h2>
 						<p class="mb-4">Discover our meticulously crafted phone accessories, tailored to enhance your device's functionality and style.</p>
-						<p><a href="category.php" class="btn">Explore</a></p>
+						<p><a href="shop.php" class="btn">Explore</a></p>
 					</div> 
 					<!-- End Column 1 -->
 

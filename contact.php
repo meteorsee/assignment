@@ -8,7 +8,7 @@
         <div class="intro-excerpt">
           <h1>Get in Touch with Us</h1>
           <p class="mb-4">Connect with Us to Share Your Thoughts and Inquiries.</p>
-          <p><a href="category.php" class="btn btn-secondary me-2">Shop Now</a><a href="shop.php"
+          <p><a href="shop.php" class="btn btn-secondary me-2">Shop Now</a><a href="shop.php"
               class="btn btn-white-outline">Explore</a></p>
         </div>
       </div>
