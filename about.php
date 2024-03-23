@@ -18,61 +18,20 @@
 
 		
 
-		<!-- Start Why Choose Us Section -->
+		<!-- Start Mission Section -->
 		<div class="why-choose-section">
 			<div class="container">
 				<div class="row justify-content-between">
 					<div class="col-lg-6">
-						<h2 class="section-title">Why Choose Us</h2>
-						<p>At Gadget Galaxy, we're dedicated to providing exceptional service and premium products to our customers.</p>
+						<h2 class="section-title">Mission</h2>
+						<p>At Gadget Galaxy, our mission is to provide innovative and high-quality phone accessories that enhance the functionality and style of your devices. We strive to deliver exceptional customer service and a seamless shopping experience.</p>
 
-						<div class="row my-5">
-							<div class="col-6 col-md-6">
-								<div class="feature">
-									<div class="icon">
-										<img src="images/truck.svg" alt="Image" class="imf-fluid">
-									</div>
-									<h3>Fast &amp; Free Shipping</h3>
-									<p>Enjoy swift delivery on all your orders.</p>
-								</div>
-							</div>
-
-							<div class="col-6 col-md-6">
-								<div class="feature">
-									<div class="icon">
-										<img src="images/bag.svg" alt="Image" class="imf-fluid">
-									</div>
-									<h3>Easy to Shop</h3>
-									<p>Navigate our user-friendly website and find the perfect accessories hassle-free.</p>
-								</div>
-							</div>
-
-							<div class="col-6 col-md-6">
-								<div class="feature">
-									<div class="icon">
-										<img src="images/support.svg" alt="Image" class="imf-fluid">
-									</div>
-									<h3>24/7 Support</h3>
-									<p>Our customer service team is here to assist you round the clock.</p>
-								</div>
-							</div>
-
-							<div class="col-6 col-md-6">
-								<div class="feature">
-									<div class="icon">
-										<img src="images/return.svg" alt="Image" class="imf-fluid">
-									</div>
-									<h3>Hassle Free Returns</h3>
-									<p>Not satisfied? We offer easy returns to ensure your peace of mind.</p>
-								</div>
-							</div>
-
-						</div>
+						
 					</div>
 
 					<div class="col-lg-5">
 						<div class="img-wrap">
-							<img src="images/why-choose-us-img.jpg" alt="Image" class="img-fluid">
+							<img src="images/mission.png" alt="Image" class="img-fluid">
 						</div>
 					</div>
 
