@@ -2,7 +2,7 @@
 
 <html>
 <head>
-    <title>Register - Food Order System</title>
+    <title>Register - Gadget Galaxy</title>
     <link rel="stylesheet" href="css/user-login-register.css">
 </head>
 
