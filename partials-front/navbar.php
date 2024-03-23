@@ -18,6 +18,7 @@
 	<link href="css/tiny-slider.css" rel="stylesheet">
 	<link href="css/style.css" rel="stylesheet">
 	<link href="css/shop.css" rel="stylesheet">
+	
 
 	<title>Gadget Galaxy</title>
 </head>

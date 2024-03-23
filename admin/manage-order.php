@@ -64,10 +64,13 @@
                             <td><?php echo $order_date;?></td>
                             <td>
                                 <?php 
-                                    if($status == "Done Payment"){
+                                    if($status == "Order Received"){
+                                        echo "<label style='color: black;'>$status</label>";
+                                    } elseif($status == "Delivered"){
                                         echo "<label style='color: green;'>$status</label>";
-
-                                    } elseif($status == "Cancelled"){
+                                    } elseif($status == "Pending Delivery"){
+                                        echo "<label style='color: orange;'>$status</label>";
+                                    }elseif($status == "Cancelled"){
                                         echo "<label style='color: red;'>$status</label>";
                                     }
                                 ?>

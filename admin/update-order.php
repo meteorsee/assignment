@@ -73,7 +73,9 @@
                     <td>Status: </td>
                     <td>
                         <select name="status">
-                            <option <?php if($status=="Done Payment"){echo "selected";} ?> value="Done Payment">Done Payment</option>
+                            <option <?php if($status=="Order Received"){echo "selected";} ?> value="Order Received">Order Received</option>
+                            <option <?php if($status=="Delivered"){echo "selected";} ?> value="Delivered">Delivered</option>
+                            <option <?php if($status=="Pending Delivery"){echo "selected";} ?> value="Pending Delivery">Pending Delivery</option>
                             <option <?php if($status=="Cancelled"){echo "selected";} ?> value="Cancelled">Cancelled</option>
                         </select>
                     </td>

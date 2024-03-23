@@ -198,7 +198,7 @@ if (isset($_POST["submit_payment"])) {
     }
 
     $sql3 = "UPDATE tbl_order SET 
-            status = 'Done Payment'
+            status = 'Order Received'
             WHERE invoice_number = '$invoiceNumber'";
 
     $res3 = mysqli_query($conn, $sql3);

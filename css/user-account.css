@@ -69,3 +69,20 @@ p-acc {
 #orders th {
     background-color: #f2f2f2;
 }
+
+/*Track Order*/
+#tracking table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#tracking th,
+#tracking td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+#tracking th {
+    background-color: #f2f2f2;
+}
