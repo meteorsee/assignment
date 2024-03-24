@@ -233,6 +233,10 @@ if (isset($_SESSION['user'])) {
 <?php
 
 if (isset($_POST["submit"])) {
+    
+    // Set the default time zone to Malaysia
+    date_default_timezone_set('Asia/Kuala_Lumpur');
+
     // Get all the user details from the form
     $first_name = $_POST["c_fname"];
     $last_name = $_POST['c_lname'];
