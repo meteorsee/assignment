@@ -2,13 +2,20 @@
 include('partials-front/navbar.php'); 
 
 function generateInvoiceNumber() {
+    // Set the default time zone to Malaysia
+    date_default_timezone_set('Asia/Kuala_Lumpur');
+    
     // Generate a unique invoice number based on your criteria
-    // For example, you can combine a prefix with a timestamp
+    // For example, you can combine a prefix with a formatted timestamp
     $prefix = "INV";
     $timestamp = time();
-    $invoiceNumber = $prefix . $timestamp;
+    $formattedTimestamp = date('YmdHis', $timestamp); // Format timestamp as YYYYMMDDHHmmss
+    $invoiceNumber = $prefix . $formattedTimestamp;
+    
     return $invoiceNumber;
 }
+
+
 ?>
 
 <!-- Start Hero Section -->
