@@ -7,6 +7,8 @@
     <head>
         <title>Phone Accessories Order Website - Home Page</title>
         <link rel="stylesheet" href="../css/admin.css">
+        <link rel="icon" href="../favicon.png">
+
     </head>
     <body>
         <!-- Menu Section Starts -->
