@@ -1,11 +1,11 @@
-<?php include('partials-front/navbar.php') ?>
+<?php include ('partials-front/navbar.php') ?>
 
 <?php
-if (isset($_SESSION['user'])) {
+if (isset ($_SESSION['user'])) {
     // Retrieve the username from the session
     $username = $_SESSION['user'];
     //echo $username;
-    if (isset($_SESSION['invoice'])) {
+    if (isset ($_SESSION['invoice'])) {
         $invoiceNumber = $_SESSION['invoice'];
         //echo "Invoice Number: " . $invoiceNumber;
     } else {
@@ -37,7 +37,7 @@ if (isset($_SESSION['user'])) {
 //     echo $_SESSION['order-success'];
 //     unset($_SESSION['order-success']);
 // }
-if (isset($_SESSION['upload'])) {
+if (isset ($_SESSION['upload'])) {
     echo $_SESSION['upload'];
     unset($_SESSION['upload']);
 }
@@ -115,9 +115,36 @@ if (isset($_SESSION['upload'])) {
                         </tbody>
                     </table>
                     <div class="border p-3 mb-3">
+                        <h3 class="h6 mb-0"><a class="d-block" data-bs-toggle="collapse" href="#collapsebank"
+                                role="button" aria-expanded="false" aria-controls="collapsebank">Payment
+                                Instructions</a></h3>
+
+                        <div class="collapse" id="collapsebank">
+                            <div class="py-2">
+                                <h1 class="h5 mb-0">Gadget Galaxy Bank Details</h1>
+                                <ul>
+                                    <li>Account Holder Name: Gadget Galaxy</li>
+                                    <li>Account Number: 1234567890</li>
+                                </ul>
+                                <h1 class="h5 mb-0">Detailed Instructions</h1>
+                                <ol>
+                                    <li>To complete the payment, first you have to transfer the relevant amount to the
+                                        bank account mentioned above.</li>
+                                    <li>Once the transfer has completed, please screenshot the payment proof.</li>
+                                    <li>After that, please enter the bank name and account number that you used to make
+                                        payment.</li>
+                                    <li>After entering the relevant details, please continue with uploading the
+                                        screenshot of the payment earlier.</li>
+                                </ol>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="border p-3 mb-3">
                         <h3 class="h6 mb-0">Payment Details</h3>
                         <div class="py-2">
-                            <form method="POST" id="bankTransferForm" enctype="multipart/form-data" onsubmit="return validateBankNumber()">
+                            <form method="POST" id="bankTransferForm" enctype="multipart/form-data"
+                                onsubmit="return validateBankNumber()">
                                 <div class="mb-3">
                                     <label for="bankName" class="form-label">Bank Name</label>
                                     <input type="text" class="form-control" id="bankName" name="bankName" required>
@@ -146,53 +173,53 @@ if (isset($_SESSION['upload'])) {
 </div>
 
 <?php
-if (isset($_POST["submit_payment"])) {
+if (isset ($_POST["submit_payment"])) {
 
     $userId = $_POST['user_id'];
     $bankName = $_POST['bankName'];
     $bank_account_number = $_POST['bank_account_number'];
     //$bank_image_name = "";
 
-    if(isset($_FILES['image']['name'])){
+    if (isset ($_FILES['image']['name'])) {
         // Upload the image
         // To upload the image we need the image name, source path and destination path
         $image_name = $_FILES['image']['name'];
 
         // Upload the image only if the image is selected
-        if($image_name != ""){
+        if ($image_name != "") {
 
 
-        // Auto Rename the uploaded image
-        // Get the extension of our image
-        $image_name_parts = explode('.', $image_name);
-        $ext = end($image_name_parts);
+            // Auto Rename the uploaded image
+            // Get the extension of our image
+            $image_name_parts = explode('.', $image_name);
+            $ext = end($image_name_parts);
 
-        // Rename the image
-        $image_name = $invoiceNumber.'.'.$ext;
+            // Rename the image
+            $image_name = $invoiceNumber . '.' . $ext;
 
-        $source_path = $_FILES['image']['tmp_name'];
+            $source_path = $_FILES['image']['tmp_name'];
 
-        $destination_path = "images/payment/".$image_name;
+            $destination_path = "images/payment/" . $image_name;
 
-        // Upload the image
-        $upload = move_uploaded_file($source_path, $destination_path);
-        
-        // Check whether the image is uploaded or not
-        // And if the image is not uploaded then we will stop the process and redirect with error message
+            // Upload the image
+            $upload = move_uploaded_file($source_path, $destination_path);
 
-        if($upload == false){
-            // Set message
-            $_SESSION['upload'] = "<div class='error'>Failed to upload image.</div>";
-            
-            // Redirect to Add Category page
-            echo "<script type='text/javascript'>window.location.href = 'payment.php';</script>";
+            // Check whether the image is uploaded or not
+            // And if the image is not uploaded then we will stop the process and redirect with error message
 
-            // Stop the process
-            die();
+            if ($upload == false) {
+                // Set message
+                $_SESSION['upload'] = "<div class='error'>Failed to upload image.</div>";
+
+                // Redirect to Add Category page
+                echo "<script type='text/javascript'>window.location.href = 'payment.php';</script>";
+
+                // Stop the process
+                die();
+            }
+
         }
-
-    }
-    }else{
+    } else {
         // Dont upload the iamge and set the image name as blank value
         $image_name = '';
     }
@@ -240,7 +267,7 @@ if (isset($_POST["submit_payment"])) {
 }
 ?>
 
-<?php include('partials-front/footer.php') ?>
+<?php include ('partials-front/footer.php') ?>
 <script>
     function validateBankNumber() {
         var bankNumber = document.getElementById("bank_account_number").value;

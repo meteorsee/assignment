@@ -131,7 +131,7 @@
                                 <span class="text-black">Subtotal</span>
                             </div>
                             <div class="col-md-6 text-right">
-                                <strong class="text-black subtotal"><?php echo $subtotal; ?></strong>
+                                <strong class="text-black">RM </strong><strong class="text-black subtotal"><?php echo $subtotal; ?></strong>
                             </div>
                         </div>
                         <div class="row mb-5">
@@ -139,7 +139,7 @@
                                 <span class="text-black">Total</span>
                             </div>
                             <div class="col-md-6 text-right">
-                                <strong class="text-black total"><?php echo $total; ?></strong>
+                                <strong class="text-black" >RM </strong><strong class="text-black total"><?php echo $total; ?></strong>
                             </div>
                         </div>
 
