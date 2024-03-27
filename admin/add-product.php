@@ -100,20 +100,20 @@
             <?php
                 if(isset($_POST["submit"])){
                     // Get Value from the category form
-                    $title = $_POST['title'];
-                    $description = $_POST['description'];
-                    $price = $_POST['price'];
-                    $category = $_POST['category'];
+                    $title = mysqli_real_escape_string($conn, $_POST['title']);
+                    $description = mysqli_real_escape_string($conn, $_POST['description']);
+                    $price = mysqli_real_escape_string($conn, $_POST['price']);
+                    $category = mysqli_real_escape_string($conn, $_POST['category']);
 
                     // Need to check whether the radio is selected or not
                     if(isset($_POST['featured'])){
-                        $featured = $_POST['featured'];
+                        $featured = mysqli_real_escape_string($conn, $_POST['featured']);
                     }else{
                         $featured = 'No';
                     }
                     
                     if(isset($_POST['active'])){
-                        $active = $_POST['active'];
+                        $active = mysqli_real_escape_string($conn, $_POST['active']);
                     }else{
                         $active = 'No';
                     }

@@ -44,10 +44,10 @@
     if(isset($_POST['submit'])){
 
         // Get password values from form to update
-        $id = $_POST['id'];
-        $current_password = md5($_POST['current_password']);
-        $new_password = md5($_POST['new_password']);
-        $confirm_password = md5($_POST['confirm_password']);
+        $id = mysqli_real_escape_string($conn, $_POST['id']);
+        $current_password = md5(mysqli_real_escape_string($conn, $_POST['current_password']));
+        $new_password = md5(mysqli_real_escape_string($conn, $_POST['new_password']));
+        $confirm_password = md5(mysqli_real_escape_string($conn, $_POST['confirm_password']));
 
 
         // Check whether the user with the current ID and current password exist or not

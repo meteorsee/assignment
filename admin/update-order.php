@@ -109,12 +109,12 @@
         <?php
         if(isset($_POST['submit'])){
             // Get form data
-            $qty = $_POST['qty'];
-            $status = $_POST['status'];
-            $customer_name = $_POST['customer_name'];
-            $email = $_POST['email'];
-            $phone_no = $_POST['phone_no'];
-            $address = $_POST['address'];
+            $qty = mysqli_real_escape_string($conn, $_POST['qty']);
+            $status = mysqli_real_escape_string($conn, $_POST['status']);
+            $customer_name = mysqli_real_escape_string($conn, $_POST['customer_name']);
+            $email = mysqli_real_escape_string($conn, $_POST['email']);
+            $phone_no = mysqli_real_escape_string($conn, $_POST['phone_no']);
+            $address = mysqli_real_escape_string($conn, $_POST['address']);
 
             // Update the database
             $sql2 = "UPDATE tbl_order SET

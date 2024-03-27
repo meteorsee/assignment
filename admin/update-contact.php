@@ -89,7 +89,7 @@
             <?php
                 if(isset($_POST['submit'])){
                     // Get all the values from the form
-                    $status = $_POST["status"];
+                    $status = mysqli_real_escape_string($conn, $_POST["status"]);
 
                     // Update the database
                     $sql2 = "UPDATE tbl_contact SET

@@ -238,14 +238,14 @@ if (isset($_POST["submit"])) {
     date_default_timezone_set('Asia/Kuala_Lumpur');
 
     // Get all the user details from the form
-    $first_name = $_POST["c_fname"];
-    $last_name = $_POST['c_lname'];
-    $address = $_POST['c_address'];
-    $state = $_POST['c_state'];
-    $postal = $_POST['c_postal_zip'];
-    $email = $_POST["c_email"];
-    $phone_no = $_POST["c_phone"];
-    $order_notes = $_POST["c_order_notes"];
+    $first_name = mysqli_real_escape_string($conn, $_POST["c_fname"]);
+    $last_name = mysqli_real_escape_string($conn, $_POST['c_lname']);
+    $address = mysqli_real_escape_string($conn, $_POST['c_address']);
+    $state = mysqli_real_escape_string($conn, $_POST['c_state']);
+    $postal = mysqli_real_escape_string($conn, $_POST['c_postal_zip']);
+    $email = mysqli_real_escape_string($conn, $_POST["c_email"]);
+    $phone_no = mysqli_real_escape_string($conn, $_POST["c_phone"]);
+    $order_notes = mysqli_real_escape_string($conn, $_POST["c_order_notes"]);
     $order_date = date('Y-m-d h:i:sa');
     $status = "Proceed to Payment";
     $user_id = $_POST['id'];

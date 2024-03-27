@@ -170,9 +170,9 @@ if (isset ($_POST['logout'])) {
             $result_user = mysqli_query($conn, $sql_user);
             // Change password process
             if (isset ($_POST['change_password'])) {
-                $current_password = $_POST['current_password'];
-                $new_password = $_POST['new_password'];
-                $confirm_password = $_POST['confirm_password'];
+                $current_password = mysqli_real_escape_string($conn, $_POST['current_password']);
+                $new_password = mysqli_real_escape_string($conn, $_POST['new_password']);
+                $confirm_password = mysqli_real_escape_string($conn, $_POST['confirm_password']);
 
                 // Fetch the current user's data
                 $sql_user = "SELECT * FROM tbl_user WHERE id = '$id'";

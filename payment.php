@@ -175,9 +175,9 @@ if (isset ($_SESSION['upload'])) {
 <?php
 if (isset ($_POST["submit_payment"])) {
 
-    $userId = $_POST['user_id'];
-    $bankName = $_POST['bankName'];
-    $bank_account_number = $_POST['bank_account_number'];
+    $userId = mysqli_real_escape_string($conn, $_POST['user_id']);
+    $bankName = mysqli_real_escape_string($conn, $_POST['bankName']);
+    $bank_account_number = mysqli_real_escape_string($conn, $_POST['bank_account_number']);
     //$bank_image_name = "";
 
     if (isset ($_FILES['image']['name'])) {

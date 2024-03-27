@@ -51,12 +51,12 @@
 if(isset($_POST['submit'])){
     // Process for registration
     // Get Data from Registration Form
-    $first_name = $_POST['first_name'];
-    $last_name = $_POST['last_name'];
-    $username = $_POST['username'];
-    $phone_no = $_POST['phone_no'];
-    $password = md5($_POST['password']); // You should use more secure methods like password_hash() for password hashing
-    $confirm_password = md5($_POST['confirm_password']); // You should use more secure methods like password_hash() for password hashing
+    $first_name = mysqli_real_escape_string($conn, $_POST['first_name']);
+    $last_name = mysqli_real_escape_string($conn, $_POST['last_name']);
+    $username = mysqli_real_escape_string($conn, $_POST['username']);
+    $phone_no = mysqli_real_escape_string($conn, $_POST['phone_no']);
+    $password = md5(mysqli_real_escape_string($conn, $_POST['password'])); 
+    $confirm_password = md5(mysqli_real_escape_string($conn, $_POST['confirm_password']));
 
     // Check if password and confirm password match
     if($password !== $confirm_password) {

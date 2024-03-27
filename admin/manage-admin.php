@@ -65,7 +65,7 @@
                                     $id = $rows['id'];
                                     $full_name = $rows['full_name'];
                                     $username = $rows['username'];
-                                
+                                    if($username != "admin") {
                                 ?>
 
                                     <tr>
@@ -81,8 +81,7 @@
 
                                 <?php    
                             }
-
-
+                        }
                             }else{
                                 //We dont have data in database;
 

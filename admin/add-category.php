@@ -58,17 +58,17 @@
             <?php
                 if(isset($_POST["submit"])){
                     // Get Value from the category form
-                    $title = $_POST['title'];
+                    $title = mysqli_real_escape_string($conn, $_POST['title']);
 
                     // Need to check whether the radio is selected or not
                     if(isset($_POST['featured'])){
-                        $featured = $_POST['featured'];
+                        $featured = mysqli_real_escape_string($conn, $_POST['featured']);
                     }else{
                         $featured = 'No';
                     }
                     
                     if(isset($_POST['active'])){
-                        $active = $_POST['active'];
+                        $active = mysqli_real_escape_string($conn, $_POST['active']);
                     }else{
                         $active = 'No';
                     }

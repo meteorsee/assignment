@@ -1,6 +1,8 @@
 <?php 
     include("../config/constants.php");
     include("login-check.php");
+    include('auth.php'); 
+
 ?>
 
 <html>
@@ -8,7 +10,7 @@
         <title>Phone Accessories Order Website - Home Page</title>
         <link rel="stylesheet" href="../css/admin.css">
         <link rel="icon" href="../favicon.png">
-
+        <meta http-equiv="refresh" content="60">
     </head>
     <body>
         <!-- Menu Section Starts -->

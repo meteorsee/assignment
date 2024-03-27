@@ -46,8 +46,8 @@
         // Process for login
         // Get Data fron Login Form
 
-        $username = $_POST['username'];
-        $password = md5($_POST['password']);
+        $username = mysqli_real_escape_string($conn, $_POST['username']);
+        $password = md5(mysqli_real_escape_string($conn, $_POST['password']));
 
 
         if(isset($_POST['remember_me'])){
