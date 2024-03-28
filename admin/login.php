@@ -82,7 +82,7 @@ if (isset($_GET['session_expired']) && $_GET['session_expired'] == 1) {
         if($count == 1){
             // User available
             $_SESSION['login'] = "<div class='success'>Login Successful.</div>";
-            $_SESSION["user"] = $username; // To check whether the user is logged in or not and logout will unset it
+            $_SESSION["admin"] = $username; // To check whether the user is logged in or not and logout will unset it
 
             header('location:'.SITEURL.'admin/index.php');
         }else{

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 16, 2024 at 04:36 PM
+-- Generation Time: Mar 28, 2024 at 06:40 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -68,7 +68,7 @@ CREATE TABLE `tbl_cart` (
 --
 
 INSERT INTO `tbl_cart` (`id`, `user_id`, `product_id`, `title`, `price`, `image_name`, `category_id`, `created_at`, `qty`, `total`) VALUES
-(25, 6, 20, 'Casetify Travel Lover by Nawara Studio', 99, '', 19, '2024-03-11 03:32:17', 1, 99);
+(78, 3, 18, 'Casetify Black Kingsnake', 60, '', 19, '2024-03-25 10:29:03', 3, 180);
 
 -- --------------------------------------------------------
 
@@ -118,7 +118,8 @@ CREATE TABLE `tbl_contact` (
 
 INSERT INTO `tbl_contact` (`id`, `first_name`, `last_name`, `phone_no`, `message_date`, `email`, `message`, `status`) VALUES
 (16, 'Meteor', 'See', '+60193309187', '2024-03-10 08:36:38', 'meteorsee1108@gmail.com', 'test1', 'Pending Reply'),
-(17, 'See', 'Lek', '193309187', '2024-03-10 08:39:11', 'meteorsee1108@1utar.my', 'test2', 'Received');
+(17, 'See', 'Lek', '193309187', '2024-03-10 08:39:11', 'meteorsee1108@1utar.my', 'test2', 'Received'),
+(30, 'Keng Lek', 'See', '+60193309187', '2024-03-27 01:45:44', 'meteorsee1108@1utar.my', 'test2703\r\n', 'Received');
 
 -- --------------------------------------------------------
 
@@ -152,8 +153,33 @@ CREATE TABLE `tbl_order` (
 --
 
 INSERT INTO `tbl_order` (`id`, `invoice_number`, `product_id`, `product_title`, `product_price`, `product_qty`, `product_total`, `order_date`, `status`, `first_name`, `last_name`, `address`, `state`, `postal`, `email`, `phone_no`, `order_notes`, `user_id`) VALUES
-(99, 'INV1710599709', 18, 'Casetify Black Kingsnake', 60.00, 1, 60.00, '2024-03-16 03:35:09', 'Done Payment', 'Keng Lek', 'See', '91, JLN PARIT HAJI BAKI,84000, MUAR, JOHOR', 'Johor', 84000, 'meteorsee1108@1utar.my', '+60193309187', 'test', 3),
-(100, 'INV1710599709', 20, 'Casetify Travel Lover', 99.00, 1, 99.00, '2024-03-16 03:35:09', 'Done Payment', 'Keng Lek', 'See', '91, JLN PARIT HAJI BAKI,84000, MUAR, JOHOR', 'Johor', 84000, 'meteorsee1108@1utar.my', '+60193309187', 'test', 3);
+(99, 'INV1710599709', 18, 'Casetify Black Kingsnake', 60.00, 1, 60.00, '2024-03-16 03:35:09', 'Cancelled', 'Keng Lek See See', 'See', '91, JLN PARIT HAJI BAKI,84000, MUAR, JOHOR', 'Johor', 84000, 'meteorsee1108@1utar.my', '+60193309187', 'test', 3),
+(100, 'INV1710599709', 20, 'Casetify Travel Lover', 99.00, 1, 99.00, '2024-03-16 03:35:09', 'Order Received', 'Keng Lek See', 'See', '91, JLN PARIT HAJI BAKI,84000, MUAR, JOHOR', 'Johor', 84000, 'meteorsee1108@1utar.my', '+60193309187', 'test', 3),
+(101, 'INV1711117231', 18, 'Casetify Black Kingsnake', 60.00, 1, 60.00, '2024-03-22 03:20:31', 'Order Received', 'Keng Lek See', 'See', '91, JLN PARIT HAJI BAKI,84000, MUAR, JOHOR', 'Johor', 84000, 'meteorsee1108@1utar.my', '+60193309187', '', 3),
+(102, 'INV1711117231', 20, 'Casetify Travel Lover', 99.00, 1, 99.00, '2024-03-22 03:20:31', 'Order Received', 'Keng Lek See', 'See', '91, JLN PARIT HAJI BAKI,84000, MUAR, JOHOR', 'Johor', 84000, 'meteorsee1108@1utar.my', '+60193309187', '', 3),
+(103, 'INV1711117231', 21, 'Casetify PP-0008', 88.00, 1, 88.00, '2024-03-22 03:20:31', 'Order Received', 'Keng Lek See', 'See', '91, JLN PARIT HAJI BAKI,84000, MUAR, JOHOR', 'Johor', 84000, 'meteorsee1108@1utar.my', '+60193309187', '', 3),
+(104, 'INV1711186189', 18, 'Casetify Black Kingsnake', 60.00, 1, 60.00, '2024-03-23 10:29:49', 'Order Received', 'Keng Lek Tee Tee', 'Tee', '91, JLN PARIT HAJI BAKI,84000, MUAR, JOHOR', 'Johor', 84000, 'meteorsee1108@1utar.my', '+60193309187', '', 10),
+(105, 'INV1711189608', 18, 'Casetify Black Kingsnake', 60.00, 1, 60.00, '2024-03-23 11:26:48', 'Order Received', 'Keng Lek See', 'See', '91, JLN PARIT HAJI BAKI,84000, MUAR, JOHOR', 'Johor', 84000, 'meteorsee1108@1utar.my', '+60193309187', '', 3),
+(106, 'INV1711189608', 19, 'Casetify Gravity 3.0', 100.00, 1, 100.00, '2024-03-23 11:26:48', 'Order Received', 'Keng Lek See', 'See', '91, JLN PARIT HAJI BAKI,84000, MUAR, JOHOR', 'Johor', 84000, 'meteorsee1108@1utar.my', '+60193309187', '', 3),
+(107, 'INV1711189717', 18, 'Casetify Black Kingsnake', 60.00, 1, 60.00, '2024-03-23 11:28:37', 'Order Received', 'Keng Lek See', 'See', '91, JLN PARIT HAJI BAKI,84000, MUAR, JOHOR', 'Johor', 84000, 'meteorsee1108@1utar.my', '+60193309187', '', 3),
+(108, 'INV1711189784', 18, 'Casetify Black Kingsnake', 60.00, 1, 60.00, '2024-03-23 11:29:44', 'Order Received', 'Keng Lek', 'See', '91, JLN PARIT HAJI BAKI,84000, MUAR, JOHOR', 'Johor', 84000, 'meteorsee1108@1utar.my', '+60193309187', '', 3),
+(109, 'INV1711189784', 26, 'Jabra Earbuds', 50.00, 1, 50.00, '2024-03-23 11:29:44', 'Delivered', 'Keng Lek See', 'See', '91, JLN PARIT HAJI BAKI,84000, MUAR, JOHOR', 'Johor', 84000, 'meteorsee1108@1utar.my', '+60193309187', '', 3),
+(110, 'INV1711304618', 18, 'Casetify Black Kingsnake', 60.00, 1, 60.00, '2024-03-24 07:23:38', 'Proceed to Payment', 'Keng Lek', 'See', '91, JLN PARIT HAJI BAKI,84000, MUAR, JOHOR', 'Johor', 84000, 'meteorsee1108@1utar.my', '+60193309187', '', 3),
+(111, 'INV1711304658', 18, 'Casetify Black Kingsnake', 60.00, 1, 60.00, '2024-03-24 07:24:18', 'Proceed to Payment', 'Keng Lek', 'See', '91, JLN PARIT HAJI BAKI,84000, MUAR, JOHOR', 'Johor', 84000, 'meteorsee1108@1utar.my', '+60193309187', '', 3),
+(112, 'INV1711304678', 18, 'Casetify Black Kingsnake', 60.00, 1, 60.00, '2024-03-24 07:24:38', 'Proceed to Payment', 'Keng Lek', 'See', '91, JLN PARIT HAJI BAKI,84000, MUAR, JOHOR', 'Johor', 84000, 'meteorsee1108@1utar.my', '+60193309187', '', 3),
+(113, 'INV1711304683', 18, 'Casetify Black Kingsnake', 60.00, 1, 60.00, '2024-03-24 07:24:43', 'Proceed to Payment', 'Keng Lek', 'See', '91, JLN PARIT HAJI BAKI,84000, MUAR, JOHOR', 'Johor', 84000, 'meteorsee1108@1utar.my', '+60193309187', '', 3),
+(114, 'INV1711304686', 18, 'Casetify Black Kingsnake', 60.00, 1, 60.00, '2024-03-24 07:24:46', 'Proceed to Payment', 'Keng Lek', 'See', '91, JLN PARIT HAJI BAKI,84000, MUAR, JOHOR', 'Johor', 84000, 'meteorsee1108@1utar.my', '+60193309187', '', 3),
+(115, 'INV20240325022535', 18, 'Casetify Black Kingsnake', 60.00, 1, 60.00, '2024-03-24 07:25:35', 'Proceed to Payment', 'Keng Lek', 'See', '91, JLN PARIT HAJI BAKI,84000, MUAR, JOHOR', 'Johor', 84000, 'meteorsee1108@1utar.my', '+60193309187', '', 3),
+(116, 'INV20240325022847', 18, 'Casetify Black Kingsnake', 60.00, 1, 60.00, '2024-03-25 02:28:47', 'Order Received', 'Keng Lek', 'See', '91, JLN PARIT HAJI BAKI,84000, MUAR, JOHOR', 'Johor', 84000, 'meteorsee1108@1utar.my', '+60193309187', '', 3),
+(117, 'INV20240325122405', 18, 'Casetify Black Kingsnake', 60.00, 1, 60.00, '2024-03-25 12:24:05', 'Order Received', 'Keng Lek', 'See', '91, JLN PARIT HAJI BAKI,84000, MUAR, JOHOR', 'Johor', 84000, 'meteorsee1108@1utar.my', '+60193309187', '', 3),
+(118, 'INV20240325123641', 19, 'Casetify Gravity 3.0', 100.00, 2, 200.00, '2024-03-25 12:36:41', 'Proceed to Payment', 'Keng Lek', 'See', '91, JLN PARIT HAJI BAKI,84000, MUAR, JOHOR', 'Johor', 84000, 'meteorsee1108@1utar.my', '+60193309187', '', 3),
+(119, 'INV20240325123741', 19, 'Casetify Gravity 3.0', 100.00, 2, 200.00, '2024-03-25 12:37:41', 'Proceed to Payment', 'Keng Lek', 'See', '91, JLN PARIT HAJI BAKI,84000, MUAR, JOHOR', 'Johor', 84000, 'meteorsee1108@1utar.my', '+60193309187', '', 3),
+(120, 'INV20240325123916', 19, 'Casetify Gravity 3.0', 100.00, 2, 200.00, '2024-03-25 12:39:16', 'Proceed to Payment', 'Keng Lek', 'See', '91, JLN PARIT HAJI BAKI,84000, MUAR, JOHOR', 'Johor', 84000, 'meteorsee1108@1utar.my', '+60193309187', '', 3),
+(121, 'INV20240325124043', 19, 'Casetify Gravity 3.0', 100.00, 2, 200.00, '2024-03-25 12:40:43', 'Proceed to Payment', 'Keng Lek', 'See', '91, JLN PARIT HAJI BAKI,84000, MUAR, JOHOR', 'Johor', 84000, 'meteorsee1108@1utar.my', '+60193309187', '', 3),
+(122, 'INV20240325144606', 19, 'Casetify Gravity 3.0', 100.00, 3, 300.00, '2024-03-25 02:46:06', 'Proceed to Payment', 'Keng Lek', 'See', '91, JLN PARIT HAJI BAKI,84000, MUAR, JOHOR', 'Johor', 84000, 'meteorsee1108@1utar.my', '+60193309187', '', 3),
+(123, 'INV20240325144606', 20, 'Casetify Travel Lover', 99.00, 1, 99.00, '2024-03-25 02:46:06', 'Proceed to Payment', 'Keng Lek', 'See', '91, JLN PARIT HAJI BAKI,84000, MUAR, JOHOR', 'Johor', 84000, 'meteorsee1108@1utar.my', '+60193309187', '', 3),
+(124, 'INV20240325145623', 19, 'Casetify Gravity 3.0', 100.00, 3, 300.00, '2024-03-25 02:56:23', 'Proceed to Payment', 'Keng Lek', 'See', '91, JLN PARIT HAJI BAKI,84000, MUAR, JOHOR', 'Johor', 84000, 'meteorsee1108@1utar.my', '+60193309187', '', 3),
+(125, 'INV20240325145623', 20, 'Casetify Travel Lover', 99.00, 1, 99.00, '2024-03-25 02:56:23', 'Proceed to Payment', 'Keng Lek', 'See', '91, JLN PARIT HAJI BAKI,84000, MUAR, JOHOR', 'Johor', 84000, 'meteorsee1108@1utar.my', '+60193309187', '', 3);
 
 -- --------------------------------------------------------
 
@@ -163,7 +189,7 @@ INSERT INTO `tbl_order` (`id`, `invoice_number`, `product_id`, `product_title`, 
 
 CREATE TABLE `tbl_payment` (
   `id` int(11) UNSIGNED NOT NULL,
-  `user_id` int(11) NOT NULL,
+  `user_id` int(11) UNSIGNED NOT NULL,
   `invoice_number` varchar(255) NOT NULL,
   `bank_name` varchar(255) NOT NULL,
   `bank_account_number` int(255) NOT NULL,
@@ -183,7 +209,12 @@ INSERT INTO `tbl_payment` (`id`, `user_id`, `invoice_number`, `bank_name`, `bank
 (28, 3, 'INV1710597904', 'Public Bank', 16514, 'INV1710597904.png', 2147483647),
 (29, 3, 'INV1710597978', 'Public Bank', 16514, 'INV1710597978.png', 2147483647),
 (30, 3, 'INV1710598249', 'Public Bank', 16514, 'INV1710598249.jpg', 2147483647),
-(31, 3, 'INV1710599709', 'Public Bank', 16514, 'INV1710599709.jpg', 2147483647);
+(31, 3, 'INV1710599709', 'Public Bank', 16514, 'INV1710599709.jpg', 2147483647),
+(32, 3, 'INV1711189608', 'Public Bank', 16514, 'INV1711189608.jpg', 2147483647),
+(33, 3, 'INV1711189717', 'Public Bank', 16514, 'INV1711189717.jpg', 2147483647),
+(34, 3, 'INV1711189784', 'Public Bank', 16514, 'INV1711189784.jpg', 2147483647),
+(35, 3, 'INV20240325022847', 'Public Bank', 16514, 'INV20240325022847.jpg', 2147483647),
+(36, 3, 'INV20240325122405', 'Public Bank', 16514, 'INV20240325122405.png', 2147483647);
 
 -- --------------------------------------------------------
 
@@ -262,7 +293,10 @@ INSERT INTO `tbl_user` (`id`, `first_name`, `last_name`, `username`, `phone_no`,
 (5, 'Vivian', 'Na', 'VV', '1234', '', '202cb962ac59075b964b07152d234b70'),
 (6, 'Kim Hau', 'Yau', 'KH', '12345', '', '202cb962ac59075b964b07152d234b70'),
 (7, 'Jie Qing', 'Chai', 'JQ', '123', '', '202cb962ac59075b964b07152d234b70'),
-(8, 'Yu Xuan', 'Tee', 'YX', '123', '', '202cb962ac59075b964b07152d234b70');
+(8, 'Yu Xuan', 'Tee', 'YX', '123', '', '202cb962ac59075b964b07152d234b70'),
+(9, 'Keng Lek', 'See', 'SKL', '+60193309187', '', '202cb962ac59075b964b07152d234b70'),
+(10, 'Yu Xuan', 'Tee', 'TYX', '+60193309187', '', '202cb962ac59075b964b07152d234b70'),
+(11, 'Meteor', 'See', 'cjq', '123', '', '202cb962ac59075b964b07152d234b70');
 
 --
 -- Indexes for dumped tables
@@ -299,20 +333,22 @@ ALTER TABLE `tbl_contact`
 --
 ALTER TABLE `tbl_order`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `account_id` (`user_id`),
-  ADD KEY `product_id` (`product_id`);
+  ADD KEY `product_id` (`product_id`),
+  ADD KEY `user_id` (`user_id`);
 
 --
 -- Indexes for table `tbl_payment`
 --
 ALTER TABLE `tbl_payment`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`user_id`);
 
 --
 -- Indexes for table `tbl_product`
 --
 ALTER TABLE `tbl_product`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `category_id` (`category_id`);
 
 --
 -- Indexes for table `tbl_user`
@@ -334,7 +370,7 @@ ALTER TABLE `tbl_admin`
 -- AUTO_INCREMENT for table `tbl_cart`
 --
 ALTER TABLE `tbl_cart`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
 
 --
 -- AUTO_INCREMENT for table `tbl_category`
@@ -346,19 +382,19 @@ ALTER TABLE `tbl_category`
 -- AUTO_INCREMENT for table `tbl_contact`
 --
 ALTER TABLE `tbl_contact`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `tbl_order`
 --
 ALTER TABLE `tbl_order`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=126;
 
 --
 -- AUTO_INCREMENT for table `tbl_payment`
 --
 ALTER TABLE `tbl_payment`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT for table `tbl_product`
@@ -370,7 +406,7 @@ ALTER TABLE `tbl_product`
 -- AUTO_INCREMENT for table `tbl_user`
 --
 ALTER TABLE `tbl_user`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- Constraints for dumped tables
@@ -382,6 +418,24 @@ ALTER TABLE `tbl_user`
 ALTER TABLE `tbl_cart`
   ADD CONSTRAINT `tbl_cart_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `tbl_user` (`id`),
   ADD CONSTRAINT `tbl_cart_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `tbl_product` (`id`);
+
+--
+-- Constraints for table `tbl_order`
+--
+ALTER TABLE `tbl_order`
+  ADD CONSTRAINT `tbl_order_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `tbl_user` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `tbl_payment`
+--
+ALTER TABLE `tbl_payment`
+  ADD CONSTRAINT `tbl_payment_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `tbl_user` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `tbl_product`
+--
+ALTER TABLE `tbl_product`
+  ADD CONSTRAINT `tbl_product_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `tbl_category` (`id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
