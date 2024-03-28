@@ -1,8 +1,7 @@
 <?php include('../config/constants.php');
 $_SESSION['last_timestamp'] = time();
 if (isset($_GET['session_expired']) && $_GET['session_expired'] == 1) {
-    echo "<script>alert('Your session has expired. Please log in 
-again.');</script>";
+    echo "<script>alert('Your session has expired. Please log in again.');</script>";
     session_destroy();
     }
     echo "<script>window.history.replaceState({}, document.title, window.location.pathname);</script>";
@@ -85,7 +84,7 @@ again.');</script>";
             $_SESSION['login'] = "<div class='success'>Login Successful.</div>";
             $_SESSION["user"] = $username; // To check whether the user is logged in or not and logout will unset it
 
-            header('location:'.SITEURL.'admin/');
+            header('location:'.SITEURL.'admin/index.php');
         }else{
             // User not available
             $_SESSION['login'] = "<div class='error text-center'>Username or Password did not match.</div>";
