@@ -1,5 +1,5 @@
 <?php
-$timeout_duration = 5;
+$timeout_duration = 30;
 
 if (!isset($_SESSION["user"]) || (time() - $_SESSION['last_timestamp']) > $timeout_duration) {
     session_unset();
