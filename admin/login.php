@@ -2,9 +2,11 @@
 $_SESSION['last_timestamp'] = time();
 if (isset($_GET['session_expired']) && $_GET['session_expired'] == 1) {
     echo "<script>alert('Your session has expired. Please log in 
-    again.');</script>";
+again.');</script>";
     session_destroy();
     }
+    echo "<script>window.history.replaceState({}, document.title, window.location.pathname);</script>";
+
 ?>
 
 <html>

@@ -1,4 +1,5 @@
-<?php include ('partials-front/navbar.php'); ?>
+<?php include ('partials-front/navbar.php'); 
+?>
 <?php
 // Check if the user is logged in
 if (!isset ($_SESSION['user'])) {
@@ -54,7 +55,7 @@ if (isset ($_POST['logout'])) {
 
         <!-- Logout button -->
         <form action="" method="post" class="logout-form">
-            <input type="submit" name="logout" value="Logout">
+            <input class="btn-secondary" type="submit" name="logout" value="Logout">
         </form>
     </div>
     <div class="main-content-acc">
