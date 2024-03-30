@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 28, 2024 at 06:40 AM
+-- Generation Time: Mar 30, 2024 at 04:54 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -55,9 +55,8 @@ CREATE TABLE `tbl_cart` (
   `user_id` int(10) UNSIGNED NOT NULL,
   `product_id` int(10) UNSIGNED NOT NULL,
   `title` varchar(255) NOT NULL,
-  `price` int(11) NOT NULL,
-  `image_name` varchar(255) NOT NULL,
-  `category_id` int(11) NOT NULL,
+  `price` decimal(10,2) NOT NULL,
+  `category_id` int(10) UNSIGNED NOT NULL,
   `created_at` datetime NOT NULL,
   `qty` int(11) NOT NULL,
   `total` int(11) NOT NULL
@@ -67,8 +66,10 @@ CREATE TABLE `tbl_cart` (
 -- Dumping data for table `tbl_cart`
 --
 
-INSERT INTO `tbl_cart` (`id`, `user_id`, `product_id`, `title`, `price`, `image_name`, `category_id`, `created_at`, `qty`, `total`) VALUES
-(78, 3, 18, 'Casetify Black Kingsnake', 60, '', 19, '2024-03-25 10:29:03', 3, 180);
+INSERT INTO `tbl_cart` (`id`, `user_id`, `product_id`, `title`, `price`, `category_id`, `created_at`, `qty`, `total`) VALUES
+(78, 3, 18, 'Casetify Black Kingsnake', 60.00, 19, '2024-03-25 10:29:03', 3, 180),
+(79, 3, 19, 'Casetify Gravity 3.0', 100.00, 19, '2024-03-30 04:37:25', 1, 100),
+(80, 3, 20, 'Casetify Travel Lover', 99.00, 19, '2024-03-30 04:39:55', 1, 99);
 
 -- --------------------------------------------------------
 
@@ -314,7 +315,8 @@ ALTER TABLE `tbl_admin`
 ALTER TABLE `tbl_cart`
   ADD PRIMARY KEY (`id`),
   ADD KEY `user_id` (`user_id`),
-  ADD KEY `product_id` (`product_id`);
+  ADD KEY `product_id` (`product_id`),
+  ADD KEY `category_id` (`category_id`);
 
 --
 -- Indexes for table `tbl_category`
@@ -370,7 +372,7 @@ ALTER TABLE `tbl_admin`
 -- AUTO_INCREMENT for table `tbl_cart`
 --
 ALTER TABLE `tbl_cart`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
 
 --
 -- AUTO_INCREMENT for table `tbl_category`
@@ -417,7 +419,8 @@ ALTER TABLE `tbl_user`
 --
 ALTER TABLE `tbl_cart`
   ADD CONSTRAINT `tbl_cart_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `tbl_user` (`id`),
-  ADD CONSTRAINT `tbl_cart_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `tbl_product` (`id`);
+  ADD CONSTRAINT `tbl_cart_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `tbl_product` (`id`),
+  ADD CONSTRAINT `tbl_cart_ibfk_3` FOREIGN KEY (`category_id`) REFERENCES `tbl_category` (`id`);
 
 --
 -- Constraints for table `tbl_order`
