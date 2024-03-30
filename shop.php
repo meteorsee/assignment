@@ -95,6 +95,7 @@ if(isset($_GET['added']) && $_GET['added'] == 'true') {
                                     <strong class="product-price">RM
                                         <?php echo $price; ?>
                                     </strong>
+                                        <?php echo "<p>".$description."</p>"; ?>
                                     <span class="icon-cross">
                                         <img src="images/cross.svg" class="img-fluid">
                                     </span>
