@@ -3,7 +3,7 @@ UCCD3243 SERVER-SIDE WEB APPLICATIONS DEVELOPMENT
 Project Description:
 This project is a server-side web application developed by students from UTAR for the UCCD3243 Server-Side Web Applications Development course. The project aims to demonstrate the skills and knowledge acquired throughout the course by implementing a web application using server-side technologies.
 
-The SQL is placed in the Folder named Database, while the Assignment Report is placed outside with the naming UCCD3243 Group 18 Assignment Report.
+The SQL is placed in the Folder named Database, while the Assignment Report is placed outside with the naming UCCD3243 Group 18.
 
 Contributors:
 1. See Keng Lek
