@@ -54,7 +54,7 @@
         <div class="col-4 text-center">
             <?php
             // SQL Query
-            $sql3 = "SELECT COUNT(DISTINCT invoice_number) AS TotalOrders FROM tbl_order WHERE status != 'Cancelled'";
+            $sql3 = "SELECT COUNT(DISTINCT invoice_number) AS TotalOrders FROM tbl_order WHERE status != 'Cancelled' && status != 'Payment Cancel'";
 
             // Execute Query
             $res3 = mysqli_query($conn, $sql3);
@@ -78,7 +78,7 @@
         <div class="col-4 text-center">
             <?php
             // SQL Query
-            $sql4 = "SELECT SUM(product_total) AS Total FROM tbl_order";
+            $sql4 = "SELECT SUM(product_total) AS Total FROM tbl_order WHERE status != 'Cancelled' && status != 'Payment Cancel'";
 
             // Execute Query
             $res4 = mysqli_query($conn, $sql4);
