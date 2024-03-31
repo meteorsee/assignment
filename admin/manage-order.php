@@ -72,6 +72,8 @@
                                         echo "<label style='color: orange;'>$status</label>";
                                     }elseif($status == "Cancelled"){
                                         echo "<label style='color: red;'>$status</label>";
+                                    }elseif($status == "Proceed to Payment"){
+                                        echo "<label style='color: red;'>$status</label>";
                                     }
                                 ?>
                             </td>

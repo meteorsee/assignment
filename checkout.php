@@ -62,14 +62,6 @@ if (isset($_SESSION['user'])) {
     exit(); // Stop further execution
 }
 
-//     if (isset($_SESSION['order-success'])) {
-//         echo $_SESSION['order-success'];
-//         unset($_SESSION['order-success']);
-//     }
-// if (isset($_SESSION['order-failed'])) {
-//     echo $_SESSION['order-failed'];
-//     unset($_SESSION['order-failed']);
-// }
 ?>
 <div class="untree_co-section">
     <div class="container">
@@ -139,22 +131,7 @@ if (isset($_SESSION['user'])) {
 
                     </div>
                     <br>
-                    <!--
-                    <div class="col-md-12">
-                        <h2 class="h3 mb-3 text-black">Coupon Code</h2>
-                        <div class="p-3 p-lg-5 border bg-white">
-
-                            <label for="c_code" class="text-black mb-3">Enter your coupon code if you have one</label>
-                            <div class="input-group w-75 couponcode-wrap">
-                                <input type="text" class="form-control me-2" id="c_code" placeholder="Coupon Code"
-                                    aria-label="Coupon Code" aria-describedby="button-addon2">
-                                <div class="input-group-append">
-                                    <button class="btn btn-black btn-sm" type="button" id="button-addon2">Apply</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
--->
+                    
                 </div>
                 <div class="col-md-6">
                     <div class="row mb-5">

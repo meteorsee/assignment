@@ -116,8 +116,8 @@ if (isset ($_SESSION['upload'])) {
                     </table>
                     <div class="border p-3 mb-3">
                         <h3 class="h6 mb-0"><a class="d-block" data-bs-toggle="collapse" href="#collapsebank"
-                                role="button" aria-expanded="false" aria-controls="collapsebank">Payment
-                                Instructions</a></h3>
+                                role="button" aria-expanded="false" aria-controls="collapsebank" style="color:red;">Payment
+                                Instructions (New User Please READ!)</a></h3>
 
                         <div class="collapse" id="collapsebank">
                             <div class="py-2">
@@ -231,11 +231,11 @@ if (isset ($_POST["submit_payment"])) {
     $res3 = mysqli_query($conn, $sql3);
 
     if ($res3 == true) {
-        //Successful update category
-        //$_SESSION['update-status'] = "<div class='success'>Category Update Successfully.</div>";
+        //Successful update 
+        //$_SESSION['update-status'] = "<div class='success'>Invoice Number Updated Successfully.</div>";
     } else {
-        //Successful update category
-        //$_SESSION['update-status'] = "<div class='error'>Failed to Update Category.</div>";
+        //Failed to update 
+        //$_SESSION['update-status'] = "<div class='error'>Failed to Update Invoice Number.</div>";
     }
 
 
@@ -250,10 +250,6 @@ if (isset ($_POST["submit_payment"])) {
 
     $res4 = mysqli_query($conn, $sql4);
     if ($res4 == true) {
-        //Payment Successful
-        // if (isset($_SESSION ['invoice_number'])) {
-        //     $_SESSION['invoice'] = "Invoice Number: " . $invoiceNumber;
-        // }
 
         // After inserting all products, clear the cart (optional)
         $sql_clear_cart = "DELETE FROM tbl_cart WHERE user_id = '$userId'";

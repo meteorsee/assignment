@@ -1,4 +1,4 @@
-<?php include('partials/menu.php'); ?>
+<?php include ('partials/menu.php'); ?>
 <!-- Main Content Section Starts -->
 <div class="main-content">
     <div class="wrapper">
@@ -59,15 +59,20 @@
             // Execute Query
             $res3 = mysqli_query($conn, $sql3);
 
-            // Count the rows
-            $count3 = mysqli_num_rows($res3);
+            // Check if query executed successfully
+            if ($res3) {
+                // Fetch the result
+                $row = mysqli_fetch_assoc($res3);
+                $totalOrders = $row['TotalOrders'];
 
+                // Display total orders
+                echo "<h1>{$totalOrders}</h1>";
+                echo "<br />Total Orders";
+            } else {
+                // Display error if query fails
+                echo "Error: " . mysqli_error($conn);
+            } 
             ?>
-            <h1>
-                <?php echo $count3; ?>
-            </h1>
-            <br />
-            Total Orders
         </div>
 
         <div class="col-4 text-center">
@@ -83,9 +88,9 @@
 
             // Check if Total is not null or empty
             if (!empty($row4['Total'])) {
-                $total_revenue = number_format($row4['Total'], 2); 
+                $total_revenue = number_format($row4['Total'], 2);
             } else {
-                $total_revenue = number_format(0, 2); 
+                $total_revenue = number_format(0, 2);
             }
 
             ?>
@@ -119,4 +124,4 @@
 </div>
 <!-- Main Content Setion Ends -->
 
-<?php include('partials/footer.php'); ?>
+<?php include ('partials/footer.php'); ?>
